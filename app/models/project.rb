@@ -4,4 +4,5 @@ class Project < ActiveRecord::Base
   validates :required_approvals, numericality: { only_integer: true, greater_than: 0 }
 
   has_many :repositories
+  accepts_nested_attributes_for :repositories
 end

@@ -6,19 +6,11 @@
       <%= emoji_tag(@approval_emoji.name, @approval_emoji.url) %></span>
   </header>
 
-  <%#= simple_form_for [@project, @repository] do |f| %>
-    <%#= f.input :name %>
-    <%#= f.input :description %>
-    <%#= f.input :url %>
-
-    <%#= f.submit 'Add' %>
-  <%# end %>
-
   <ul class="project-repositories">
-    <% (@repositories*4).each do |repository| %>
+    <% @repositories.each do |repository| %>
       <li class="project-repositories-item">
         <h2 class="project-repositories-item-title">
-          <%= link_to repository.name, repository.url, target: '_blank' %>
+          <%= link_to repository.fullname, "http://github.com/#{repository.fullname}", target: '_blank' %>
         </h2>
 
         <h3 class="pull-requests-box-count approved-pull-requests">
