@@ -21,6 +21,9 @@
             <li><%= link_to 'My projects', projects_path %></li>
             <li><%= link_to 'New project', new_project_path %></li>
           </ul>
+          <ul style="float:right">
+            <li><%= link_to 'Login', user_omniauth_authorize_path(:github) %></li>
+          </ul>
         </nav>
       </div>
     </header>
