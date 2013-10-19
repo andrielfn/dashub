@@ -16,6 +16,11 @@ class PullRequest
     @pull_request._links.html.href
   end
 
+  # Returns the date in which the pull request was created.
+  def open_date
+    @pull_request.created_at
+  end
+
   # Public: returns the number of comments per user.
   #
   # Example:
