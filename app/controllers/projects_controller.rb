@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     @repositories = @project.repositories
     @approval_emoji = Emoji.new(@project.approval_emoji)
     @repository = Repository.new
+    @project_review = ProjectUserReview.new(@project, current_user)
   end
 
   def new
