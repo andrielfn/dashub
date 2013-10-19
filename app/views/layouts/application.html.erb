@@ -7,9 +7,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <header class="main-header">
       <div class="container">
         <h1 class="logo">Dashub</h1>
@@ -27,10 +24,17 @@
             </ul>
           <% end %>
         </nav>
+
+        <ul style="float:right">
+          <li><%= link_to 'Login', user_omniauth_authorize_path(:github) %></li>
+        </ul>
       </div>
     </header>
 
     <div class="container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
       <%= yield %>
     </div>
 

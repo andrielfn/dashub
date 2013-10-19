@@ -1,59 +1,62 @@
-$item-list-box-padding: 20px;
-
 .project-repositories {
+  @extend %clearfix;
   @extend %reset-space;
 }
 
 .project-repositories-item {
-  list-style: none;
-  padding: $item-list-box-padding;
-  position: relative;
-}
-
-.project-repositories-item.odd {
+  @extend %box-sizing;
   background-color: #F9F9F8;
+  float: left;
+  width: 450px;
+  list-style: none;
+  padding: 10px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:nth-child(2) {
+    margin-right: 0;
+  }
 }
 
 .project-repositories-item-title {
   @extend %reset-space;
-  font-weight: 300;
+  font-weight: 600;
   font-size: em(30);
+  margin-bottom: 10px;
 
-  a {
+  a, a:visited {
     color: #333;
+    text-decoration: none;
   }
-}
-
-.project-repositories-item-description {
-  color: #95917E;
-  font-size: em(14);
 }
 
 .pull-requests {
   @extend %reset-space;
 }
 
-.pull-requests-count {
-  font-size: em(14);
-  margin-bottom: 5px;
+.pull-request-item-title {
+  list-style: none;
+  list-style-position: inside;
 }
 
-.pull-request-item-title {
-  list-style-position: inside;
+.pull-request-open-date {
+  font-size: em(11);
 }
 
 .pull-requests-box-count {
   @extend %reset-space;
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   text-align: center;
-  font-size: em(48);
+  font-size: em(34);
+  font-weight: 300;
   color: #FFF;
 
   span {
     display: block;
-    font-size: em(12, 48);
+    font-size: em(11, 34);
     margin-top: -6px;
   }
 }
@@ -66,6 +69,6 @@ $item-list-box-padding: 20px;
 
 .pending-pull-requests {
   top: 0;
-  right: 80px;
+  right: 60px;
   background-color: #D6D488;
 }

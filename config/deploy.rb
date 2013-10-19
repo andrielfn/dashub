@@ -73,7 +73,8 @@ role :db,  LINODE_SERVER_HOSTNAME, :primary => true
 
 # Add Configuration Files & Compile Assets
 after 'deploy:update_code' do
-  # Setup Configuration
+  assets_cache_path = "#{release_path}/tmp/cache/assets"
+  run "rm -rf -- #{assets_cache_path} && mkdir -p -- #{release_path}/tmp/cache && ln -s -- #{shared_path}/assets-cache #{assets_cache_path}"
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 
   # Compile Assets
@@ -87,6 +88,7 @@ deploy.task :restart, :roles => :app do
   sudo "chown -R www-data:www-data #{latest_release}"
   sudo "chown -R www-data:www-data #{shared_path}/bundle"
   sudo "chown -R www-data:www-data #{shared_path}/log"
+  sudo "chown -R www-data:www-data #{shared_path}/assets-cache"
 
   # Restart Application
   run "touch #{current_path}/tmp/restart.txt"
