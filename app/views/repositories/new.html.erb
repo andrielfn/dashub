@@ -11,6 +11,9 @@
 
 <ul>
   <% @repositories.each do |repository| %>
-    <li><%= repository.fullname %></li>
+    <li>
+      <span><%= repository.fullname %></span>
+      <span><%= link_to 'x', project_repository_path(@project, repository), data: { method: :delete } %></span>
+    </li>
   <% end %>
 </ul>

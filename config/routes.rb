@@ -8,6 +8,6 @@ Dashub::Application.routes.draw do
   end
 
   resources :projects, except: :destroy do
-    resources :repositories, only: [:new, :create]
+    resources :repositories, only: [:new, :create, :destroy]
   end
 end
