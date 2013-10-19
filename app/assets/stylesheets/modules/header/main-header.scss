@@ -1,0 +1,12 @@
+$main-header-height: 50px;
+
+.main-header {
+  height: $main-header-height;
+  background-color: $main-header-background;
+}
+
+.main-header .logo {
+  @extend %reset-space;
+  line-height: $main-header-height;
+  color: #FFF;
+}
