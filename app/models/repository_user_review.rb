@@ -1,11 +1,31 @@
 class RepositoryUserReview
-  delegate :fullname, to: :repository
+  attr_reader :repo, :user, :project
 
-  attr_reader :repository, :user
-
-  def initialize(repository, user)
-    @repository = repository
+  def initialize(repo, user, project)
+    @repo = repo
     @user = user
+    @project = project
+  end
+
+  alias :fullname :repo
+
+  # Public: returns only the repo name.
+  def name
+    repo.split('/').last
+  end
+
+  # True if the repository has `GH_API_PER_PAGE` open pull requests and there is
+  # a next page.
+  def too_many_open_pull_requests?
+    pull_requests_to_review.size == GH_API_PER_PAGE && client.last_response.rels[:next].present?
+  end
+
+  def pull_requests_to_review
+    @pull_requests_to_review ||= client.pull_requests(repo, 'open').map do |resource|
+      review = PullRequestUserReview.new(repo, resource.number, @user, project)
+      review.pull_request = resource
+      review
+    end
   end
 
   # Public: returns the priorited pull requests to review.
@@ -42,12 +62,6 @@ class RepositoryUserReview
 
   private
 
-  def pull_requests_to_review
-    @pull_requests_to_review ||= @repository.open_pull_requests.map do |pull_request|
-      PullRequestUserReview.new(pull_request, @user)
-    end
-  end
-
   # Internal: partition the repository pull requests into different stacks.
   #
   # Current stacks are:
@@ -74,5 +88,9 @@ class RepositoryUserReview
       end
       partitions
     end
+  end
+
+  def client
+    @client ||= Octokit::Client.new(access_token: ENV.fetch('GITHUB_ACCESS_TOKEN') { raise 'Github Access Token Missing' })
   end
 end
