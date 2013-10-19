@@ -9,12 +9,19 @@ class RepositoriesController < ApplicationController
     @project = Project.find(params[:project_id])
     @repository = @project.repositories.new(repository_params)
 
-    if @repository.save
-      redirect_to new_project_repository_path, notice: 'Repository created successfully.'
+    access_availability = RepositoryAvailability.new(@repository)
+
+    if access_availability.available_for?(current_user)
+      if @repository.save
+        redirect_to new_project_repository_path, notice: 'Repository created successfully.'
+        return
+      end
     else
-      @repositories = @project.repositories
-      render action: :new
+      flash[:alert] = "Couldn't find this repository :("
     end
+
+    @repositories = @project.repositories(true)
+    render action: :new
   end
 
   private
