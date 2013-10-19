@@ -87,10 +87,8 @@ class PullRequestUserReview
   end
 
   # Public: returns the number of approves made.
-  #
-  # TODO: ignore duplicated approvals
   def approvals_count
-    approval_comments.count
+    users_approval.count
   end
 
   # Public: returns true if the pull request is fully approved and ready to merge.
