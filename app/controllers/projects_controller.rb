@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_path
     else
+      @emojis = Emoji.new.all
       render 'new'
     end
   end
@@ -51,6 +52,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :emoji_count, :approval_emoji)
   end
 end
