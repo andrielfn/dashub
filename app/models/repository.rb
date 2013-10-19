@@ -4,6 +4,7 @@ class Repository < ActiveRecord::Base
 
   validates :fullname,
     presence: true,
+    uniqueness: true,
     format: { with: /^[^\/\s]+\/[^\/\s]+$/, multiline: true }
 
   belongs_to :project
