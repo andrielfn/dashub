@@ -12,11 +12,11 @@
         <% end %>
       <% end %>
     </div>
-    <strong style="display: block;">Approval Rule</strong>
 
-    <div style="margin: 10px;">
+    <div class='approval-rules'>
+      <h3>Approval Rule</h3>
       <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
-      <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji' %>
+      <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji', input_html: {class: 'approval-emoji', readonly: true } %>
     </div>
 
     <%= f.submit 'Create' %>
