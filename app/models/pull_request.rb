@@ -6,8 +6,28 @@ class PullRequest
     @project = project
   end
 
+  # Public: returns the issue comments on pull request.
+  #
+  # TODO: perform pagination
   def comments
     @comments ||= pull_request.rels[:comments].get.data
+  end
+
+  # Public: returns users that commented on pull request.
+  def commenters
+    @commenters ||= comments.index_by { |comment| comment.user.login }.keys
+  end
+
+  # Public: returns code review comments on pull request.
+  #
+  # TODO: perform pagination
+  def code_reviews
+    @code_reviews ||= pull_request.rels[:review_comments].get.data
+  end
+
+  # Public: returns users that reviewed the code on pull request.
+  def reviewers
+    @reviewers ||= code_reviews.index_by { |comment| comment.user.login }.keys
   end
 
   def url
