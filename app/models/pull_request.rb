@@ -24,10 +24,17 @@ class PullRequest
   end
 
   # Public: returns the number of approves made.
+  #
+  # TODO: pending integration with approval criteria
   def approvals_count
     comments.select do |comment|
       comment.body.include?(':shipit:')
     end.count
+  end
+
+  # Public: checks if the pull request was approved according to project criteria.
+  def approved?
+    approvals_count >= 2
   end
 
   private
