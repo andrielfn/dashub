@@ -1,16 +1,25 @@
 class PullRequest
-  delegate :title, to: :@pull_request
+  delegate :title, to: :pull_request
 
-  def initialize(pull_request, project)
-    @pull_request = pull_request
+  attr_reader :repo, :number
+
+  def initialize(repo, number, project)
+    @repo    = repo
+    @number  = number
     @project = project
   end
+
+  # Public: returns the Github pull request resource.
+  def pull_request
+    @pull_request ||= client.pull_request(repo, number)
+  end
+  attr_writer :pull_request
 
   # Public: returns the issue comments on pull request.
   #
   # TODO: perform pagination
   def comments
-    @comments ||= pull_request.rels[:comments].get.data
+    @comments ||= client.issue_comments(repo, number)
   end
 
   # Public: returns users that commented on pull request.
@@ -22,7 +31,7 @@ class PullRequest
   #
   # TODO: perform pagination
   def code_reviews
-    @code_reviews ||= pull_request.rels[:review_comments].get.data
+    @code_reviews ||= client.issue_comments(repo, number)
   end
 
   # Public: returns users that reviewed the code on pull request.
@@ -31,12 +40,12 @@ class PullRequest
   end
 
   def url
-    @pull_request._links.html.href
+    pull_request._links.html.href
   end
 
   # Returns the date in which the pull request was created.
   def open_date
-    @pull_request.created_at
+    pull_request.created_at
   end
 
   # Public: returns the number of comments per user.
@@ -88,6 +97,10 @@ class PullRequest
   end
 
   private
+
+  def client
+    @client ||= Octokit::Client.new(access_token: ENV.fetch('GITHUB_ACCESS_TOKEN') { raise 'Github Access Token Missing' })
+  end
 
   # Internal: return the approval comments.
   def approval_comments
