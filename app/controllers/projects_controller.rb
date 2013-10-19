@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @emojis = Emoji.new.all
+    @emojis = Emoji.all
 
     render 'new'
   end
