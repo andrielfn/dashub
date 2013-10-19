@@ -16,6 +16,20 @@
     <br />
 
     <%= link_to repository.url, repository.url, target: '_blank' %>
+
+    <div>
+      <h2>Pull Requests</h2>
+      <% repository.open_pull_requests.each do |pull_request| %>
+        <div class='pull-request'>
+          <%= link_to pull_request.title, pull_request.url %>
+          <% if pull_request.approved? %>
+            (approved)
+          <% else %>
+            (pending, missing <%= pull_request.missing_approvals %>)
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
 

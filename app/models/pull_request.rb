@@ -1,13 +1,19 @@
 class PullRequest
-  attr_reader :repo, :issue_number
+  delegate :title, to: :@pull_request
 
-  def initialize(repo, issue_number)
-    @repo = repo
-    @issue_number = issue_number
+  # TODO: remove, it is only used for debug purpose
+  attr_reader :pull_request
+
+  def initialize(pull_request)
+    @pull_request = pull_request
   end
 
   def comments
-    @comments ||= client.issue_comments(repo, issue_number)
+    @comments ||= pull_request.rels[:comments].get.data
+  end
+
+  def url
+    @pull_request._links.html.href
   end
 
   # Public: returns the number of comments per user.
@@ -23,9 +29,29 @@ class PullRequest
     stats
   end
 
+  # Public: returns the number of approvals required.
+  def required_approvals
+    # TODO: implement
+    2
+  end
+
+  # Public: returns the number of missing approvals.
+  #
+  # It returns 0 if fullfilled.
+  def missing_approvals
+    count = required_approvals - approvals_count
+
+    if count < 0
+      0
+    else
+      count
+    end
+  end
+
   # Public: returns the number of approves made.
   #
   # TODO: pending integration with approval criteria
+  # TODO: ignore duplicated approvals
   def approvals_count
     comments.select do |comment|
       comment.body.include?(':shipit:')
@@ -34,12 +60,6 @@ class PullRequest
 
   # Public: checks if the pull request was approved according to project criteria.
   def approved?
-    approvals_count >= 2
-  end
-
-  private
-
-  def client
-    @client ||= Octokit::Client.new(access_token: ENV.fetch('GITHUB_ACCESS_TOKEN') { raise 'Github Access Token Missing' })
+    approvals_count >= required_approvals
   end
 end
