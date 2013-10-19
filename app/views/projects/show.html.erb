@@ -4,13 +4,13 @@
     <h3 class="page-content-subtitle"><%= pluralize(@repositories.size, 'repository') %> associated</h3>
   </header>
 
-  <%#= simple_form_for [@project, @repository] do |f| %>
-    <%#= f.input :name %>
-    <%#= f.input :description %>
-    <%#= f.input :url %>
+  <%= simple_form_for [@project, @repository] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :url %>
 
-    <%#= f.submit 'Add' %>
-  <%# end %>
+    <%= f.submit 'Add' %>
+  <% end %>
 
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
