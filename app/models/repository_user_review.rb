@@ -27,7 +27,7 @@ class RepositoryUserReview
 
   # Internal: partition the repository pull requests into reviewed and missing review.
   def partition_pull_requests
-    @reviewed, @missing_review = @repository.pull_requests.partition do |pull_request|
+    @reviewed, @missing_review = @repository.open_pull_requests.partition do |pull_request|
       pull_request.users_approval.include?(@user.login)
     end
   end
