@@ -11,6 +11,7 @@
       </ul>
 
       <footer class="project-box-footer">
+        <%= link_to 'Repositories', new_project_repository_path(project) %>
         <%= link_to 'Settings', edit_project_path(project), class: 'project-box-settings' %>
       </footer>
     </li>
