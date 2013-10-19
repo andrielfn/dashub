@@ -3,10 +3,12 @@ $main-header-height: 50px;
 .main-header {
   height: $main-header-height;
   background-color: $main-header-background;
+  margin-bottom: 20px;
 }
 
 .main-header .logo {
   @extend %reset-space;
+  float: left;
   line-height: $main-header-height;
   color: #FFF;
 }
