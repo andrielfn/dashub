@@ -21,7 +21,7 @@
       <h2>Open Pull Requests (<%= pull_request_count(repository) %>)</h2>
       <% repository.open_pull_requests.each do |pull_request| %>
         <div class='pull-request'>
-          <%= link_to pull_request.title, pull_request.url %>
+          <%= link_to pull_request.title, pull_request.url %> (Open <%= pluralize(pull_request.open_days, 'day') %> ago)
           <% if pull_request.approved? %>
             (approved)
           <% else %>
