@@ -11,7 +11,8 @@ module ProjectHelper
     repository.open_pull_requests.find_all(&:approved?).size
   end
 
-  def emoji_tag(name, url)
-    image_tag(url, width: 20, alt: name, title: name)
+  def emoji_tag(name, url, options = {})
+    width = options[:width] || 20
+    image_tag(url, width: width, alt: name, title: name)
   end
 end

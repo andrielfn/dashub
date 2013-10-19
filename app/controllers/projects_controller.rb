@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @emojis = Emoji.all
+    @emojis = Repository::SUGGESTED_EMOJIS.map { |e| Emoji.new(e) }
   end
 
   def create
