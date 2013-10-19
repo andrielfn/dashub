@@ -16,9 +16,9 @@ class PullRequest
     @pull_request._links.html.href
   end
 
-  # Returns the number of days the pull request has ben open.
-  def open_days
-    ((Time.current - @pull_request.created_at) / 1.day).to_i
+  # Returns the date in which the pull request was created.
+  def open_date
+    @pull_request.created_at
   end
 
   # Public: returns the number of comments per user.
