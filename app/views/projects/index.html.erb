@@ -5,11 +5,6 @@
         <%= link_to project.name, project_path(project), class: 'project-box-title-link' %>
       </h2>
 
-      <ul class="project-box-list-items">
-        <li class="">7 opened PRs</li>
-        <li>3 closed PRs</li>
-      </ul>
-
       <footer class="project-box-footer">
         <%= link_to 'Repositories', new_project_repository_path(project), class: 'project-box-new-repository' %>
         <%= link_to 'Settings', edit_project_path(project), class: 'project-box-settings' %>
