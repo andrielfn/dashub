@@ -1,4 +1,4 @@
-class UserRepositoryReview
+class RepositoryUserReview
   attr_reader :repository, :user
 
   def initialize(repository, user)
