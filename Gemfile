@@ -13,13 +13,14 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 1.2'
 
+gem 'dotenv-rails'
+
 group :development do
   gem 'capistrano', '~> 2.15'
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
-  gem 'dotenv-rails'
 end
 
 group :test do
