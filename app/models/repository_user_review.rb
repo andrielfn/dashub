@@ -86,6 +86,6 @@ class RepositoryUserReview
   end
 
   def client
-    @client ||= Octokit::Client.new(access_token: ENV.fetch('GITHUB_ACCESS_TOKEN') { raise 'Github Access Token Missing' })
+    @client ||= Octokit::Client.new(access_token: @user.provider_token)
   end
 end

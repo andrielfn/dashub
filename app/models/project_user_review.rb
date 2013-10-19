@@ -16,7 +16,9 @@ class ProjectUserReview
   # Public: returns user repositories review.
   def repositories_review
     @repositories ||= @project.repositories.map do |repo|
+      next unless RepositoryAvailability.new(repo).available_for?(user)
+
       RepositoryUserReview.new(repo.fullname, @user, @project)
-    end
+    end.compact
   end
 end
