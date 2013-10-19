@@ -1,4 +1,6 @@
 Dashub::Application.routes.draw do
-  get "welcome/index"
+  get 'welcome/index'
   root to: 'welcome#index'
+
+  resources :projects
 end
