@@ -3,7 +3,7 @@ class RepositoriesController < ApplicationController
     @project = Project.find(params[:project_id])
     @repository = Repository.new
     @repositories = @project.repositories
-    @suggested_repos = SuggestedRepositories.new(current_user).repos
+    @suggested_repos = SuggestedRepositories.new(current_user, @project).repos
   end
 
   def create
