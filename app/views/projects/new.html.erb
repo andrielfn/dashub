@@ -2,5 +2,14 @@
 
 <%= simple_form_for @project do |f| %>
   <%= f.input :name %>
+  <div class='emoji-list' id='emoji-list'>
+    <% @emojis.each do |emoji| %>
+      <span data-emoji="<%= emoji.first %>">
+        <%= image_tag(emoji.last, width: 20, alt: emoji.first, title: emoji.first) %>
+      </span>
+    <% end %>
+  </div>
+  <%= f.input :approval_rule %>
+
   <%= f.submit 'Create' %>
 <% end %>

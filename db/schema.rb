@@ -11,12 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019014832) do
+ActiveRecord::Schema.define(version: 20131019033727) do
 
   create_table "projects", force: true do |t|
-    t.string   "name",       null: false
+    t.string   "name",          null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "approval_rule"
   end
 
   create_table "repositories", force: true do |t|

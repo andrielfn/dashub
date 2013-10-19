@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @emojis = Emoji.new.all
   end
 
   def create
@@ -26,11 +27,14 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @emojis = Emoji.new.all
+
     render 'new'
   end
 
   def update
     @project = Project.find(params[:id])
+
     if @project.update_attributes(project_params)
       @projects = Project.all
       render 'index'
