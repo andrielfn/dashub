@@ -1,0 +1,16 @@
+<h1><%= @project.name %></h1>
+
+<h3>Repositories</h3> (<%= @repositories.size %> total)
+
+<% @repositories.each do |repository| %>
+  <strong><%= repository.name %></strong>
+
+  <% if repository.description %>
+    <br />
+    <%= repository.description %>
+  <% end %>
+
+  <br />
+
+  <%= link_to repository.url, repository.url, target: '_blank' %>
+<% end %>

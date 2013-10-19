@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  def show
+    @project = Project.includes(:repositories).find(params[:id])
+    @repositories = @project.repositories
+  end
+
   def new
     @project = Project.new
   end
