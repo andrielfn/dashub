@@ -15,16 +15,22 @@
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
       <li class="project-repositories-item <%= cycle('odd', '') %>">
-        <h2 class="project-repositories-item-title"><%= repository.name %></h2>
+        <h2 class="project-repositories-item-title">
+          <%= link_to repository.name, repository.url, target: '_blank' %>
+        </h2>
 
-        <%= link_to repository.url, repository.url, target: '_blank', class: 'project-repositories-item-link' %>
+        <h3 class="pull-requests-box-count approved-pull-requests">
+          <%= approved_pull_request_count(repository) %> <span>approved</span>
+        </h3>
+
+        <h3 class="pull-requests-box-count pending-pull-requests">
+          2 <span>pending</span>
+        </h3>
 
         <p class="project-repositories-item-description"><%= repository.description %></p>
 
         <ul class="pull-requests">
-          <h3 class="pull-requests-count">
-            Open Pull Requests (Total: <%= pull_request_count(repository) %>, Approved: <%= approved_pull_request_count(repository) %>)
-          </h3>
+          <h3 class="pull-requests-count">Open Pull Requests</h3>
           <% repository.open_pull_requests.each do |pull_request| %>
             <li class='pull-request-item-title'>
               <%= link_to pull_request.title, pull_request.url %> (Open <%= distance_of_time_in_words(pull_request.open_date, Time.current) %> ago)
