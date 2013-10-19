@@ -3,8 +3,9 @@ body {
   background-color: #EBE6D7;
 }
 
-a, a:visited {
+a {
   color: $links;
+  text-decoration: none;
 
   &:hover {
     color: $hover-links;
