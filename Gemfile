@@ -5,6 +5,9 @@ gem 'simple_form'
 
 gem 'mysql2'
 
+gem 'octokit'
+gem 'devise'
+
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'bourbon'
@@ -27,5 +30,3 @@ group :test do
   gem 'capybara', '~> 2.1.0'
   gem 'launchy'
 end
-
-gem 'octokit'
