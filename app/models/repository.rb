@@ -4,7 +4,7 @@ class Repository < ActiveRecord::Base
 
   validates :fullname,
     presence: true,
-    uniqueness: true,
+    uniqueness: { scope: :project_id },
     format: { with: /^[^\/\s]+\/[^\/\s]+$/, multiline: true }
 
   belongs_to :project
