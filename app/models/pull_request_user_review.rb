@@ -1,4 +1,6 @@
 class PullRequestUserReview
+  delegate :title, to: :pull_request
+
   attr_reader :pull_request, :user
 
   def initialize(pull_request, user)

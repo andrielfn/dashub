@@ -1,9 +1,18 @@
 class RepositoryUserReview
+  delegate :fullname, to: :repository
+
   attr_reader :repository, :user
 
   def initialize(repository, user)
     @repository = repository
     @user = user
+  end
+
+  # Public: returns the priorited pull requests to review.
+  def priorited_pull_requests
+    [:missing_review, :reviewed, :ready_to_ship, :approved].flat_map do |state|
+      partitioned_pull_requests[state]
+    end
   end
 
   # Public: returns true if there is no missing pull request to review.
@@ -29,15 +38,6 @@ class RepositoryUserReview
   # Public: returns pull requests that might require user review.
   def pull_requests_missing_review
     partitioned_pull_requests[:missing_review]
-  end
-
-  def priorited_pull_requests
-    [
-      pull_requests_missing_review,
-      pull_requests_reviewed,
-      pull_requests_ready_to_ship,
-      pull_requests_approved
-    ].flatten
   end
 
   private
