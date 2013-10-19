@@ -1,19 +1,21 @@
-<%= simple_form_for [@project, @repository] do |f| %>
-  <div>
-    <%= f.hint 'http://github.com/' %>
-    <%= f.input :fullname, input_html: { autofocus: true } %>
-  </div>
+<div class="content-box">
+  <header class="page-content-header">
+    <h1 class="page-content-title">Add new repository</h1>
+  </header>
 
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+  <%= simple_form_for [@project, @repository], class: 'new-repository' do |f| %>
+      <%= f.input :fullname, input_html: { autofocus: true }, label: 'http://github.com/' %>
 
-<ul>
-  <% @repositories.each do |repository| %>
-    <li>
-      <span><%= repository.fullname %></span>
-      <span><%= link_to 'x', project_repository_path(@project, repository), data: { method: :delete } %></span>
-    </li>
+      <%= f.submit %>
   <% end %>
-</ul>
+
+  <h4>Saved repositories:</h4>
+  <ul>
+    <% @repositories.each do |repository| %>
+      <li>
+        <%= link_to repository.fullname, '' %>
+        <%= link_to '(Revoke)', project_repository_path(@project, repository), data: { method: :delete } %>
+      </li>
+    <% end %>
+  </ul>
+</div>

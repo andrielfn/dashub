@@ -8,6 +8,6 @@ a {
   text-decoration: none;
 
   &:hover {
-    color: $hover-links;
+    text-decoration: underline;
   }
 }

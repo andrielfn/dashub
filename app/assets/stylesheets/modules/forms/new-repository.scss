@@ -1,0 +1,13 @@
+.new_repository label {
+  font-size: em(40);
+  font-weight: 300;
+}
+
+.new_repository input[type=text] {
+  border: none;
+  border-bottom: 1px solid #CCC;
+  font-size: em(40);
+  font-weight: 300;
+  width: 400px;
+  outline: none;
+}
