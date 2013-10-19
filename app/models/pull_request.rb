@@ -7,7 +7,7 @@ class PullRequest
   end
 
   def comments
-    client.issue_comments(repo, issue_number)
+    @comments ||= client.issue_comments(repo, issue_number)
   end
 
   # Public: returns the number of comments per user.
@@ -21,6 +21,13 @@ class PullRequest
       stats[comment.user.login] += 1
     end
     stats
+  end
+
+  # Public: returns the number of approves made.
+  def approvals_count
+    comments.select do |comment|
+      comment.body.include?(':shipit:')
+    end.count
   end
 
   private
