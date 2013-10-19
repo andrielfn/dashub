@@ -1,11 +1,13 @@
 @import "normalize";
 @import "bourbon";
 
-@import "core/layout";
 @import "core/settings";
-@import "core/base";
 
 @import "modules/**/*";
 @import "helpers/**/*";
+
+@import "core/layout";
+@import "core/base";
+@import "core/forms";
 
 @import "pages/*";

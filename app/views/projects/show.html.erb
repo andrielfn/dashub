@@ -1,43 +1,42 @@
-<h1><%= @project.name %></h1>
+<div class="content-box">
+  <header class="page-content-header">
+    <h1 class="page-content-title"><%= @project.name %></h1>
+    <h3 class="page-content-subtitle"><%= pluralize(@repositories.size, 'repository') %> associated</h3>
+  </header>
 
-<div style="margin-bottom: 20px;">
-  <h3 style="display: inline;">Repositories</h3> (<%= @repositories.size %> total)
-</div>
+  <%#= simple_form_for [@project, @repository] do |f| %>
+    <%#= f.input :name %>
+    <%#= f.input :description %>
+    <%#= f.input :url %>
 
-<% @repositories.each do |repository| %>
-  <div style="margin-bottom: 10px; border: 1px solid #ccc;">
-    <strong><%= repository.name %></strong>
+    <%#= f.submit 'Add' %>
+  <%# end %>
 
-    <% if repository.description %>
-      <br />
-      <%= repository.description %>
-    <% end %>
+  <ul class="project-repositories">
+    <% @repositories.each do |repository| %>
+      <li class="project-repositories-item <%= cycle('odd', '') %>">
+        <h2 class="project-repositories-item-title"><%= repository.name %></h2>
 
-    <br />
+        <%= link_to repository.url, repository.url, target: '_blank', class: 'project-repositories-item-link' %>
 
-    <%= link_to repository.url, repository.url, target: '_blank' %>
+        <p class="project-repositories-item-description"><%= repository.description %></p>
 
-    <div>
-      <h2>Open Pull Requests (Total: <%= pull_request_count(repository) %>, Approved: <%= approved_pull_request_count(repository) %>)</h2>
-      <% repository.open_pull_requests.each do |pull_request| %>
-        <div class='pull-request'>
-          <%= link_to pull_request.title, pull_request.url %> (Open <%= distance_of_time_in_words(pull_request.open_date, Time.current) %> ago)
-          <% if pull_request.approved? %>
-            (approved)
-          <% else %>
-            (pending, missing <%= pull_request.missing_approvals %>)
+        <ul class="pull-requests">
+          <h3 class="pull-requests-count">
+            Open Pull Requests (Total: <%= pull_request_count(repository) %>, Approved: <%= approved_pull_request_count(repository) %>)
+          </h3>
+          <% repository.open_pull_requests.each do |pull_request| %>
+            <li class='pull-request-item-title'>
+              <%= link_to pull_request.title, pull_request.url %> (Open <%= distance_of_time_in_words(pull_request.open_date, Time.current) %> ago)
+              <% if pull_request.approved? %>
+                (approved)
+              <% else %>
+                (pending, missing <%= pull_request.missing_approvals %>)
+              <% end %>
+            </li>
           <% end %>
-        </div>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
-<h3>Add a new repository to this project</h3>
-<%= simple_form_for [@project, @repository] do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :url %>
-
-  <%= f.submit 'Add repository' %>
-<% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

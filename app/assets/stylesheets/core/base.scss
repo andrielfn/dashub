@@ -2,3 +2,11 @@ body {
   font-family: $open-sans;
   background-color: #EBE6D7;
 }
+
+a, a:visited {
+  color: $links;
+
+  &:hover {
+    color: $hover-links;
+  }
+}

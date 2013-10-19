@@ -18,9 +18,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      @projects = Project.all
-      render 'index'
+      redirect_to projects_path
     else
+      @emojis = Emoji.new.all
       render 'new'
     end
   end
@@ -36,8 +36,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
 
     if @project.update_attributes(project_params)
-      @projects = Project.all
-      render 'index'
+      redirect_to projects_path
     else
       render 'new'
     end
@@ -47,13 +46,12 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
-    @projects = Project.all
-    render 'index'
+    redirect_to projects_path
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :emoji_count, :approval_emoji)
   end
 end
