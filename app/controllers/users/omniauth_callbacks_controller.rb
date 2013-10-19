@@ -7,4 +7,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       set_flash_message(:notice, :success, kind: 'Github') if is_navigational_format?
     end
   end
+
+  protected
+
+  def after_omniauth_failure_path_for(scope)
+    root_path
+  end
 end
