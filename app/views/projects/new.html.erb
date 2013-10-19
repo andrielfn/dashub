@@ -4,10 +4,11 @@
   <%= simple_form_for @project do |f| %>
     <%= f.input :name %>
 
+    <h3>Popular emojis</h3>
     <div class='emoji-list' id='emoji-list'>
       <% @emojis.each do |emoji| %>
-        <%= content_tag :span, data: { emoji: emoji.first } do %>
-          <%= emoji_tag(emoji.first, emoji.last) %>
+        <%= content_tag :span, class: 'emoji', data: { emoji: emoji.name } do %>
+          <%= emoji_tag(emoji.name, emoji.url, width: 50) %>
         <% end %>
       <% end %>
     </div>

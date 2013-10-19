@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+.emoji {
+  padding: 0 70px;
+  cursor: pointer;
+}
+
 .new-project input {
   margin-left: 20px;
   line-height: 2;
