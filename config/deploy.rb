@@ -67,6 +67,9 @@ set :scm,        :git
 set :repository, "git@github.com:railsrumble/#{GITHUB_REPOSITORY_NAME}.git"
 set :branch,     "master"
 
+set :keep_releases, 3
+after "deploy:update", "deploy:cleanup"
+
 # Roles
 role :app, LINODE_SERVER_HOSTNAME
 role :db,  LINODE_SERVER_HOSTNAME, :primary => true
