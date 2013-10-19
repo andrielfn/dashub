@@ -1,22 +1,29 @@
-<h2>Project</h2>
-
 <div class='new-project'>
-  <%= simple_form_for @project do |f| %>
-    <%= f.input :name %>
+  <datalist id='all-emojis'>
+    <% @all_emojis.each do |emoji| %>
+      <%= tag :option, value: emoji.first %>
+    <% end %>
+  </datalist>
 
-    <h3>Popular emojis</h3>
+  <%= simple_form_for @project do |f| %>
+    <h3>Project name</h3>
+    <%= f.input :name, label: false, placeholder: 'Example: Ruby projects' %>
+
+    <h3>Approval emoji</h3>
+    <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji', input_html: { list: 'all-emojis' } %>
+
+    <h3>Popular choices</h3>
     <div class='emoji-list' id='emoji-list'>
-      <% @emojis.each do |emoji| %>
+      <% @suggested_emojis.each do |emoji| %>
         <%= content_tag :span, class: 'emoji', data: { emoji: emoji.name } do %>
           <%= emoji_tag(emoji.name, emoji.url, width: 50) %>
         <% end %>
       <% end %>
     </div>
-    <strong style="display: block;">Approval Rule</strong>
 
-    <div style="margin: 10px;">
+    <div class='approval-rules'>
+      <h3>Approval Rule</h3>
       <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
-      <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji' %>
     </div>
 
     <%= f.submit 'Create' %>

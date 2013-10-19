@@ -2,11 +2,10 @@
 @import "bourbon";
 
 @import "core/settings";
+@import "core/layout";
+@import "core/base";
 
 @import "helpers/**/*";
 @import "modules/**/*";
-
-@import "core/layout";
-@import "core/base";
 
 @import "pages/*";

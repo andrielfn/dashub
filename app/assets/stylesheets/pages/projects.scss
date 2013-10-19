@@ -11,12 +11,23 @@
 }
 
 .emoji {
-  padding: 0 70px;
+  padding: 0 60px;
   cursor: pointer;
 }
 
 .new-project input {
-  margin-left: 20px;
   line-height: 2;
   width: 300px;
+}
+
+.approval-rules select {
+  float: left;
+  margin-right: 20px;
+  background: whitesmoke;
+  height: 32px;
+  width: 50px;
+}
+
+.approval-emoji {
+  float: left;
 }

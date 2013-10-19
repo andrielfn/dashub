@@ -16,7 +16,7 @@ class ProjectUserReview
   # Public: returns user repositories review.
   def repositories_review
     @repositories ||= @project.repositories.map do |repo|
-      RepositoryUserReview.new(repo, @user)
+      RepositoryUserReview.new(repo.fullname, @user, @project)
     end
   end
 end
