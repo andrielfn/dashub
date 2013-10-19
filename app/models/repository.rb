@@ -9,7 +9,7 @@ class Repository < ActiveRecord::Base
   # Public: returns open pull requests in repository.
   def open_pull_requests
     @pull_requests ||= client.pull_requests(github_format, 'open').map do |data|
-      PullRequest.new(data)
+      PullRequest.new(data, self.project)
     end
   end
 

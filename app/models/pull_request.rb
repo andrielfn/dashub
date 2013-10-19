@@ -4,8 +4,9 @@ class PullRequest
   # TODO: remove, it is only used for debug purpose
   attr_reader :pull_request
 
-  def initialize(pull_request)
+  def initialize(pull_request, project)
     @pull_request = pull_request
+    @project = project
   end
 
   def comments
@@ -41,8 +42,7 @@ class PullRequest
 
   # Public: returns the number of approvals required.
   def required_approvals
-    # TODO: implement
-    2
+    @project.required_approvals
   end
 
   # Public: returns the number of missing approvals.
@@ -76,7 +76,7 @@ class PullRequest
   # Internal: return the approval comments.
   def approval_comments
     @approval_comments ||= comments.select do |comment|
-      comment.body.include?(':shipit:')
+      comment.body.include?(@project.approval_emoji)
     end
   end
 end

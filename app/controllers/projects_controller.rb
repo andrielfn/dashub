@@ -52,6 +52,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :emoji_count, :approval_emoji)
+    params.require(:project).permit(:name, :required_approvals, :approval_emoji)
   end
 end
