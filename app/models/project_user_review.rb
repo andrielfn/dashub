@@ -8,7 +8,7 @@ class ProjectUserReview
 
   # Public: returns ranked repositories for user.
   def ranked_repositories
-    repositories_to_review.sort_by(&:fully_reviewed?)
+    repositories.sort_by(&:fully_reviewed?)
   end
 
   private
