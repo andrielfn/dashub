@@ -18,18 +18,15 @@ $item-list-box-padding: 20px;
   @extend %reset-space;
   font-weight: 300;
   font-size: em(30);
+
+  a {
+    color: #333;
+  }
 }
 
 .project-repositories-item-description {
   color: #95917E;
   font-size: em(14);
-}
-
-.project-repositories-item-link {
-  font-size: em(12);
-  position: absolute;
-  top: $item-list-box-padding;
-  right: $item-list-box-padding;
 }
 
 .pull-requests {
@@ -43,4 +40,32 @@ $item-list-box-padding: 20px;
 
 .pull-request-item-title {
   list-style-position: inside;
+}
+
+.pull-requests-box-count {
+  @extend %reset-space;
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  font-size: em(48);
+  color: #FFF;
+
+  span {
+    display: block;
+    font-size: em(12, 48);
+    margin-top: -6px;
+  }
+}
+
+.approved-pull-requests {
+  top: 0;
+  right: 0;
+  background-color: #9DCD80;
+}
+
+.pending-pull-requests {
+  top: 0;
+  right: 80px;
+  background-color: #D6D488;
 }

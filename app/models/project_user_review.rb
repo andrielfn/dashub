@@ -8,15 +8,15 @@ class ProjectUserReview
 
   # Public: returns ranked repositories for user.
   def ranked_repositories
-    repositories_to_review.sort_by(&:fully_reviewed?)
+    repositories_review.sort_by do |repository|
+      repository.fully_reviewed? ? 1 : -1
+    end
   end
 
-  private
-
-  # Internal: returns user repositories review.
-  def repositories
+  # Public: returns user repositories review.
+  def repositories_review
     @repositories ||= @project.repositories.map do |repo|
-      UserRepositoryReview.new(repo, @user)
+      RepositoryUserReview.new(repo, @user)
     end
   end
 end
