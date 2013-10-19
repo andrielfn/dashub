@@ -12,7 +12,7 @@ module ProjectHelper
   end
 
   def emoji_tag(name, url, options = {})
-    width = options[:width] || 20
-    image_tag(url, width: width, alt: name, title: name)
+    options[:width] ||= 20
+    image_tag(url, options.merge(alt: name, title: name))
   end
 end

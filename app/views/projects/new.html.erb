@@ -1,7 +1,7 @@
 <div class='new-project'>
   <datalist id='all-emojis'>
     <% @all_emojis.each do |emoji| %>
-      <%= tag :option, value: emoji.first %>
+      <%= tag :option, value: emoji.first, data: { url: emoji.last } %>
     <% end %>
   </datalist>
 
@@ -24,6 +24,7 @@
     <div class='approval-rules'>
       <h3>Approval Rule</h3>
       <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
+      <%= emoji_tag(@default_emoji.name, @default_emoji.url, id: 'chosen-emoji', class: 'chosen-emoji') %>
     </div>
 
     <%= f.submit 'Create' %>

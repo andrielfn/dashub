@@ -15,8 +15,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @suggested_emojis = Repository::SUGGESTED_EMOJIS.map { |e| Emoji.new(e) }
-    @all_emojis = Emoji.all
+    load_emojis
   end
 
   def create
@@ -25,7 +24,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_path
     else
-      @emojis = Emoji.all
+      load_emojis
       render 'new'
     end
   end
@@ -58,5 +57,11 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:name, :required_approvals, :approval_emoji)
+  end
+
+  def load_emojis
+    @default_emoji = Emoji.new(@project.approval_emoji)
+    @suggested_emojis = Repository::SUGGESTED_EMOJIS.map { |e| Emoji.new(e) }
+    @all_emojis = Emoji.all
   end
 end
