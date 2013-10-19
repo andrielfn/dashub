@@ -5,7 +5,7 @@
   <div class='emoji-list' id='emoji-list'>
     <% @emojis.each do |emoji| %>
       <span data-emoji="<%= emoji.first %>">
-        <%= image_tag(emoji.last, width: 20, alt: emoji.first, title: emoji.first) %>
+        <%= emoji_tag(emoji.first, emoji.last) %>
       </span>
     <% end %>
   </div>

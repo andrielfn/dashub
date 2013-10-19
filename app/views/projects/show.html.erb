@@ -2,6 +2,8 @@
   <header class="page-content-header">
     <h1 class="page-content-title"><%= @project.name %></h1>
     <h3 class="page-content-subtitle"><%= pluralize(@repositories.size, 'repository') %> associated</h3>
+    <span class="page-content-subtitle">Approved by <%= @project.required_approvals %>
+      <%= emoji_tag(@approval_emoji.name, @approval_emoji.url) %></span>
   </header>
 
   <%#= simple_form_for [@project, @repository] do |f| %>

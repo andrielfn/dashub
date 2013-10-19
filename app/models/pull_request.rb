@@ -60,7 +60,6 @@ class PullRequest
 
   # Public: returns the number of approves made.
   #
-  # TODO: pending integration with approval criteria
   # TODO: ignore duplicated approvals
   def approvals_count
     approval_comments.count
@@ -76,7 +75,11 @@ class PullRequest
   # Internal: return the approval comments.
   def approval_comments
     @approval_comments ||= comments.select do |comment|
-      comment.body.include?(@project.approval_emoji)
+      comment.body.include?(approval_emoji)
     end
+  end
+
+  def approval_emoji
+    ":#{@project.approval_emoji}:"
   end
 end

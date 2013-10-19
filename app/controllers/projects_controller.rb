@@ -8,12 +8,13 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:repositories).find(params[:id])
     @repositories = @project.repositories
+    @approval_emoji = Emoji.new(@project.approval_emoji)
     @repository = Repository.new
   end
 
   def new
     @project = Project.new
-    @emojis = Emoji.new.all
+    @emojis = Emoji.all
   end
 
   def create
@@ -22,7 +23,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_path
     else
-      @emojis = Emoji.new.all
+      @emojis = Emoji.all
       render 'new'
     end
   end
