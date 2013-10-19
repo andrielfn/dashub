@@ -4,7 +4,7 @@ class Repository < ActiveRecord::Base
 
   validates :fullname,
     presence: true,
-    uniqueness: { scope: :project_id },
+    uniqueness: { scope: :project_id, message: 'repo already in this project' },
     format: { with: /^[^\/\s]+\/[^\/\s]+$/, multiline: true }
 
   belongs_to :project

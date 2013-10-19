@@ -4,7 +4,13 @@
   </header>
 
   <%= simple_form_for [@project, @repository], class: 'new-repository' do |f| %>
-      <%= f.input :fullname, input_html: { autofocus: true }, label: github_url %>
+      <%= f.input :fullname,
+        input_html: { autofocus: true },
+        required: false,
+        placeholder: 'owner/repo',
+        label: github_url,
+        label_wrapper: 'div'
+      %>
 
       <%= f.submit %>
   <% end %>

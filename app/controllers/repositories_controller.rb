@@ -17,7 +17,7 @@ class RepositoriesController < ApplicationController
         return
       end
     else
-      flash[:alert] = "Couldn't find this repository :("
+      flash.now[:alert] = "Couldn't find this repository :("
     end
 
     @repositories = @project.repositories(true)

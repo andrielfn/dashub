@@ -1,0 +1,15 @@
+.flash-message {
+  padding: 15px;
+
+  &.alert {
+    color: #A7120F;
+    background-color: #FFF2EC;
+    border-left: 3px solid #A7120F;
+  }
+
+  &.notice {
+    color: #59A80F;
+    background-color: #EFFCEB;
+    border-left: 3px solid #59A80F;
+  }
+}

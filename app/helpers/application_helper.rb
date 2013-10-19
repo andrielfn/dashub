@@ -7,4 +7,16 @@ module ApplicationHelper
   def github_url
     "http://github.com/"
   end
+
+  def flash_messages
+    messages = ''
+
+    [:alert, :notice, :warning, :error].each do |type|
+      if flash[type]
+        messages += "<p class='flash-message #{type}'>#{flash[type]}</p>"
+      end
+    end
+
+    messages.html_safe
+  end
 end
