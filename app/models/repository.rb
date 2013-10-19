@@ -23,6 +23,11 @@ class Repository < ActiveRecord::Base
     open_pull_requests.size == GH_API_PER_PAGE && client.last_response.rels[:next].present?
   end
 
+  # Public: returns only the repo name.
+  def name
+    fullname.split('/').last
+  end
+
   private
 
   def client

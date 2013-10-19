@@ -1,0 +1,80 @@
+.project-repository-item {
+  @extend %box-sizing;
+  border: 1px solid #EFEFEF;
+  float: left;
+  width: 450px;
+  list-style: none;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: relative;
+
+  &:nth-child(2) {
+    margin-right: 0;
+  }
+}
+
+.project-repositories-item-title {
+  @extend %reset-space;
+  font-weight: 600;
+  font-size: em(30);
+  padding: 10px 0 9px 15px;
+
+  a, a:visited {
+    color: #333;
+    text-decoration: none;
+  }
+}
+
+.pull-requests {
+  @extend %reset-space;
+}
+
+.pull-request-item {
+  padding: 10px 0 10px 15px;
+  border-top: 1px solid #EFEFEF;
+  list-style: none;
+  list-style-position: inside;
+}
+
+.pull-request-item-title {
+  display: block;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.pull-request-open-date {
+  // padding-left: 16px;
+  // background: image-url('alarm.png') no-repeat left center;
+  margin-top: -2px;
+  display: block;
+  font-size: em(11);
+}
+
+.pull-requests-box-count {
+  @extend %reset-space;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  font-size: em(34);
+  font-weight: 300;
+  color: #FFF;
+
+  span {
+    display: block;
+    font-size: em(11, 34);
+    margin-top: -6px;
+  }
+}
+
+.approved-pull-requests {
+  top: 0;
+  right: 0;
+  color: #9DCD80;
+}
+
+.pending-pull-requests {
+  top: 0;
+  right: 60px;
+  color: #D6D488;
+}
