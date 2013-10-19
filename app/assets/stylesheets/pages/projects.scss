@@ -4,6 +4,14 @@
 }
 
 .emoji-list {
-  margin-top: 20px 0;
+  margin: 20px 0;
+  padding: 10px;
   border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.new-project input {
+  margin-left: 20px;
+  line-height: 2;
+  width: 300px;
 }

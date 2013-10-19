@@ -1,20 +1,23 @@
 <h2>Project</h2>
 
-<%= simple_form_for @project do |f| %>
-  <%= f.input :name %>
-  <div class='emoji-list' id='emoji-list'>
-    <% @emojis.each do |emoji| %>
-      <span data-emoji="<%= emoji.first %>">
-        <%= emoji_tag(emoji.first, emoji.last) %>
-      </span>
-    <% end %>
-  </div>
-  <strong style="display: block;">Approval Rule</strong>
+<div class='new-project'>
+  <%= simple_form_for @project do |f| %>
+    <%= f.input :name %>
 
-  <div style="margin: 10px;">
-    <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
-    <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji' %>
-  </div>
+    <div class='emoji-list' id='emoji-list'>
+      <% @emojis.each do |emoji| %>
+        <%= content_tag :span, data: { emoji: emoji.first } do %>
+          <%= emoji_tag(emoji.first, emoji.last) %>
+        <% end %>
+      <% end %>
+    </div>
+    <strong style="display: block;">Approval Rule</strong>
 
-  <%= f.submit 'Create' %>
-<% end %>
+    <div style="margin: 10px;">
+      <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
+      <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji' %>
+    </div>
+
+    <%= f.submit 'Create' %>
+  <% end %>
+</div>
