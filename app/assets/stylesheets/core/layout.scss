@@ -2,3 +2,23 @@
   margin: 0 auto;
   width: 960px;
 }
+
+.content-box {
+  background-color: #FFF;
+  box-shadow: 1px 1px 5px rgba(90, 90, 90, 0.75);
+}
+
+.page-content-title {
+  @extend %reset-space;
+}
+
+.page-content-subtitle {
+  @extend %reset-space;
+  font-size: em(14);
+  line-height: .857142857;
+  color: #E89344;
+}
+
+.page-content-header {
+  padding: 20px;
+}
