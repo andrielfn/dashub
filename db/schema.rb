@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019153846) do
+ActiveRecord::Schema.define(version: 20131019165239) do
 
   create_table "projects", force: true do |t|
     t.string   "name",                                  null: false
@@ -48,6 +48,8 @@ ActiveRecord::Schema.define(version: 20131019153846) do
     t.string   "uid"
     t.string   "name"
     t.string   "login"
+    t.string   "provider_token"
+    t.string   "provider_token_expires"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
