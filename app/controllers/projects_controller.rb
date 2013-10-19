@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:repositories).find(params[:id])
+    @project = current_user.projects.includes(:repositories).find(params[:id])
     @repositories = @project.repositories
     @approval_emoji = Emoji.new(@project.approval_emoji)
     @repository = Repository.new
