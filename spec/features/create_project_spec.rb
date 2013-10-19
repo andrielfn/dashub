@@ -4,9 +4,9 @@ feature 'Create repository' do
   scenario 'with success' do
     visit root_path
 
-    click_link 'Create new project'
+    click_link 'New project'
 
-    expect(page).to have_content 'Create a new project'
+    expect(page).to have_content 'Project'
 
     fill_in 'Name', with: 'Dashub'
     click_button 'Create'
@@ -22,13 +22,13 @@ feature 'Create repository' do
     within '#new_repository' do
       fill_in 'Name', with: 'site'
       fill_in 'Description', with: 'main site description'
-      fill_in 'Url', with: 'github.com/dashub/dashub'
+      fill_in 'Url', with: 'github.com/dashub/demo-project'
 
       click_button 'Add repository'
     end
 
     expect(page).to have_content 'site'
     expect(page).to have_content 'main site description'
-    expect(page).to have_content 'github.com/dashub/dashub'
+    expect(page).to have_content 'github.com/dashub/demo-project'
   end
 end
