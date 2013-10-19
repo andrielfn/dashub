@@ -7,10 +7,14 @@
         <%= link_to project.name, project_path(project), class: 'project-box-title-link' %>
       </h2>
 
-      <div class="projec-box-content">
-        <%= link_to 'Edit', edit_project_path(project) %>
-        <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </div>
+      <ul class="project-box-list-items">
+        <li class="">7 opened PRs</li>
+        <li>3 closed PRs</li>
+      </ul>
+
+      <footer class="project-box-footer">
+        <%= link_to 'Settings', edit_project_path(project), class: 'project-box-settings' %>
+      </footer>
     </li>
   <% end %>
 </ul>
