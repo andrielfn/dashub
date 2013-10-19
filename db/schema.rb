@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019180134) do
+ActiveRecord::Schema.define(version: 20131019212929) do
 
   create_table "projects", force: true do |t|
     t.string   "name",                                  null: false
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20131019180134) do
     t.datetime "updated_at"
     t.string   "approval_emoji",     default: "shipit", null: false
     t.integer  "required_approvals", default: 2,        null: false
+    t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
 
   create_table "repositories", force: true do |t|
     t.string   "fullname",   null: false
