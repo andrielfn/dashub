@@ -7,14 +7,14 @@
   </header>
 
   <ul class="project-repositories">
-    <% @repositories.each do |repository| %>
+    <% @project_review.ranked_repositories.each do |repository_review| %>
       <li class="project-repositories-item">
         <h2 class="project-repositories-item-title">
           <%= link_to repository.fullname, "http://github.com/#{repository.fullname}", target: '_blank' %>
         </h2>
 
         <h3 class="pull-requests-box-count approved-pull-requests">
-          <%= approved_pull_request_count(repository) %> <span>approved</span>
+          <%= approved_pull_request_count(repository_review.repository) %> <span>approved</span>
         </h3>
 
         <h3 class="pull-requests-box-count pending-pull-requests">
@@ -22,7 +22,7 @@
         </h3>
 
         <ul class="pull-requests">
-          <% repository.open_pull_requests.each do |pull_request| %>
+          <% repository_review.repository.open_pull_requests.each do |pull_request| %>
             <li class='pull-request-item-title'>
             <% if pull_request.approved? %>
               <%= image_tag 'pr-accepted.png' %>

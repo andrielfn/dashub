@@ -31,6 +31,15 @@ class RepositoryUserReview
     partitioned_pull_requests[:missing_review]
   end
 
+  def priorited_pull_requests
+    [
+      pull_requests_missing_review,
+      pull_requests_reviewed,
+      pull_requests_ready_to_ship,
+      pull_requests_approved
+    ].flatten
+  end
+
   private
 
   def pull_requests_to_review
