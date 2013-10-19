@@ -16,11 +16,11 @@ class PullRequestUserReview
 
   # Public: returns true if the user added a comment on pull request.
   def reviewed?
-    @pull_request.commenters.include?(user.login) || @pull_request.reviewers.include?(user.login)
+    @pull_request.commenters.include?(user.username) || @pull_request.reviewers.include?(user.username)
   end
 
   # Public: returns true if the user did an approve comment.
   def approved?
-    @pull_request.users_approval.include?(user.login)
+    @pull_request.users_approval.include?(user.username)
   end
 end
