@@ -18,7 +18,10 @@ gem 'jquery-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# Use Capistrano for deployment
-gem 'capistrano', '~> 2.15'
+group :development do
+  gem 'capistrano', '~> 2.15'
+end
 
-gem 'rspec'
+group :development, :test do
+  gem 'rspec', '~> 2.14.1'
+end
