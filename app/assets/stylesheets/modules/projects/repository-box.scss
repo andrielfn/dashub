@@ -34,12 +34,39 @@
   border-top: 1px solid #EFEFEF;
   list-style: none;
   list-style-position: inside;
+  position: relative;
+
+  &.pending {
+    background-color: #FFF2EC;
+    border-bottom: 1px solid #A7120F;
+
+    a {
+      color: #A7120F;
+      font-weight: 600;
+    }
+  }
+
+  &.reviewed {
+    background-color: #FDFFEA;
+    border-bottom: 1px solid #ECBA09;
+  }
+
+  &.shipable {
+    background-color: #EFFCEB;
+    border-bottom: 1px solid #59A80F;
+  }
 }
 
 .pull-request-item-title {
   display: block;
   text-decoration: none;
   font-weight: 300;
+  color: #555;
+
+  &:hover {
+    color: #555;
+    text-decoration: underline;
+  }
 }
 
 .pull-request-open-date {
@@ -58,7 +85,6 @@
   text-align: center;
   font-size: em(34);
   font-weight: 300;
-  color: #FFF;
 
   span {
     display: block;
@@ -77,4 +103,15 @@
   top: 0;
   right: 60px;
   color: #D6D488;
+}
+
+.pull-request-statuses {
+  @extend %image-replacement;
+
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 16px;
+  height: 16px;
+  background: image-url('pr-statuses.png') no-repeat;
 }

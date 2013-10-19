@@ -1,14 +1,14 @@
 module ProjectHelper
-  def pull_request_count(repository)
-    if repository.too_many_open_pull_requests?
-      "#{Repository::GH_API_PER_PAGE}+"
+  def pull_request_status(pull_request)
+    if pull_request.approved?
+      'approved'
+    elsif pull_request.reviewed?
+      'reviewed'
+    elsif pull_request.ready_to_ship?
+      'shipable'
     else
-      repository.pull_requests_to_review.size
+      'pending'
     end
-  end
-
-  def approved_pull_request_count(repository)
-    repository.pull_requests_to_review.find_all(&:approved?).size
   end
 
   def emoji_tag(name, url, options = {})
