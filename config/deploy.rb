@@ -74,7 +74,9 @@ role :db,  LINODE_SERVER_HOSTNAME, :primary => true
 # Add Configuration Files & Compile Assets
 after 'deploy:update_code' do
   assets_cache_path = "#{release_path}/tmp/cache/assets"
+  assets_path = "#{release_path}/public/assets"
   run "rm -rf -- #{assets_cache_path} && mkdir -p -- #{release_path}/tmp/cache && ln -s -- #{shared_path}/assets-cache #{assets_cache_path}"
+  run "rm -rf -- #{assets_path} && mkdir -p -- #{release_path}/public && ln -s -- #{shared_path}/assets #{assets_path}"
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
 
   # Compile Assets
