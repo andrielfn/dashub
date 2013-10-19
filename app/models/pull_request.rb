@@ -1,9 +1,6 @@
 class PullRequest
   delegate :title, to: :@pull_request
 
-  # TODO: remove, it is only used for debug purpose
-  attr_reader :pull_request
-
   def initialize(pull_request, project)
     @pull_request = pull_request
     @project = project
