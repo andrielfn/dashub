@@ -18,6 +18,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+
+    @projects = Project.all
+    render 'index'
+  end
+
   private
 
   def project_params
