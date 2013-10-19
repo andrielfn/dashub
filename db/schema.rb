@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20131019062453) do
   add_index "repositories", ["project_id"], name: "index_repositories_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20131019062453) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "username",                            null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "provider"
@@ -51,7 +52,7 @@ ActiveRecord::Schema.define(version: 20131019062453) do
     t.string   "login"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
 end
