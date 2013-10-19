@@ -8,7 +8,7 @@
     <% @project_review.ranked_repositories.each do |repository_review| %>
       <li class="project-repository-item">
         <h2 class="project-repositories-item-title">
-          <%= link_to repository_review.fullname, "http://github.com/#{repository_review.fullname}", target: '_blank' %>
+          <%= link_to repository_review.fullname, repo_url(repository_review) , target: '_blank' %>
         </h2>
 
         <h3 class="pull-requests-box-count approved-pull-requests">

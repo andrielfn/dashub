@@ -4,7 +4,7 @@
   </header>
 
   <%= simple_form_for [@project, @repository], class: 'new-repository' do |f| %>
-      <%= f.input :fullname, input_html: { autofocus: true }, label: 'http://github.com/' %>
+      <%= f.input :fullname, input_html: { autofocus: true }, label: github_url %>
 
       <%= f.submit %>
   <% end %>
@@ -13,7 +13,7 @@
   <ul>
     <% @repositories.each do |repository| %>
       <li>
-        <%= link_to repository.fullname, '' %>
+        <%= link_to repository.fullname, repo_url(repository) %>
         <%= link_to '(Revoke)', project_repository_path(@project, repository), data: { method: :delete } %>
       </li>
     <% end %>
