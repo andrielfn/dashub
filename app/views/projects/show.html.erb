@@ -18,7 +18,7 @@
     <%= link_to repository.url, repository.url, target: '_blank' %>
 
     <div>
-      <h2>Pull Requests</h2>
+      <h2>Open Pull Requests (<%= pull_request_count(repository) %>)</h2>
       <% repository.open_pull_requests.each do |pull_request| %>
         <div class='pull-request'>
           <%= link_to pull_request.title, pull_request.url %>
