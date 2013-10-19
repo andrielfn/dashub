@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.includes(:repositories).find(params[:id])
     @repositories = @project.repositories
+    @repository = Repository.new
   end
 
   def new
