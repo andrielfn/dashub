@@ -19,6 +19,6 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
 # Use Capistrano for deployment
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.15'
 
 gem 'rspec'
