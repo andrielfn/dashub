@@ -9,11 +9,6 @@ class RepositoryUserReview
 
   alias :fullname :repo
 
-  # Public: returns only the repo name.
-  def name
-    repo.split('/').last
-  end
-
   # True if the repository has `GH_API_PER_PAGE` open pull requests and there is
   # a next page.
   def too_many_open_pull_requests?
