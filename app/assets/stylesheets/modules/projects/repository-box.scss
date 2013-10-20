@@ -54,7 +54,7 @@
 }
 
 .pull-request-item {
-  padding: 10px 0 10px 15px;
+  padding: 20px 0 20px 15px;
   border-top: 1px solid #EFEFEF;
   list-style: none;
   list-style-position: inside;
@@ -80,7 +80,7 @@
     }
   }
 
-  &.shipable {
+  &.shippable {
     background-color: #F5FAF4;
 
     &:hover {
@@ -92,7 +92,7 @@
 .pull-request-item-status {
   position: absolute;
   top: 4px;
-  right: 4px;
+  right: 10px;
   font-size: em(12);
   color: #888;
 }

@@ -20,14 +20,14 @@
     <ul class="pull-requests">
       <% @repository_review.priorited_pull_requests.each do |pull_review| %>
         <li class='pull-request-item <%= pull_request_status(pull_review) %>'>
-          <%= link_to  pull_review.url, target: '_blank', class: 'pull-request-item-link' do %>
+          <%= link_to  pull_review.url, target: '_blank', class: 'pull-request-item-link', title: pull_review.title do %>
             <strong><%= "##{pull_review.pull_request.number}" %></strong> <%= pull_review.title %>
 
             <time datetime="pull_review.open_date" class="pull-request-open-date">
               <%= distance_of_time_in_words(pull_review.open_date, Time.current) %> ago
             </time>
 
-            <span class="pull-request-item-status"><%= pull_request_status(pull_review) %></span>
+            <span class="pull-request-item-status" title="<%= pull_request_status_description(pull_review) %>"><%= pull_request_status(pull_review) %></span>
           <% end %>
         </li>
       <% end %>
