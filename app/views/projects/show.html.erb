@@ -1,5 +1,14 @@
 <% content_for(:page_title) { @project.name } %>
 
+<% content_for :javascript do %>
+  <%= javascript_tag do %>
+    $('[data-load]').each(function() {
+      var url = $(this).data('load');
+      $(this).load(url);
+    });
+  <% end %>
+<% end %>
+
 <div class="content-box">
   <header class="page-content-header">
     <h1 class="page-content-title"><%= @project.name %></h1>

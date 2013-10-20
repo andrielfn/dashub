@@ -53,11 +53,5 @@
     <%= javascript_include_tag "application" %>
 
     <%= yield :javascript  %>
-    <script>
-      $('[data-load]').each(function() {
-        var url = $(this).data('load');
-        $(this).load(url);
-      });
-    </script>
   </body>
 </html>
