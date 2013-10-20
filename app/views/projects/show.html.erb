@@ -28,28 +28,32 @@
     </div>
   </header>
 
-  <ul class="project-repositories">
-    <% @repositories.each do |repository| %>
-      <li class="project-repository-item" data-load='<%= async_project_repository_path(@project, repository) %>'>
-        <h4 class="project-repositories-item-org">
-          <%= link_to repository.owner, organization_url(repository), target: '_blank' %> /
-        </h4>
-        <h2 class="project-repositories-item-title">
-          <%= link_to repository.name, repo_url(repository) , target: '_blank' %>
-        </h2>
+    <% if @repositories.present? %>
+      <ul class="project-repositories">
+        <% @repositories.each do |repository| %>
+          <li class="project-repository-item" data-load='<%= async_project_repository_path(@project, repository) %>'>
+            <h4 class="project-repositories-item-org">
+              <%= link_to repository.owner, organization_url(repository), target: '_blank' %> /
+            </h4>
+            <h2 class="project-repositories-item-title">
+              <%= link_to repository.name, repo_url(repository) , target: '_blank' %>
+            </h2>
 
-        <h3 class="pull-requests-count reviewed-pull-requests">
-          0 <span>reviewed</span>
-        </h3>
+            <h3 class="pull-requests-count reviewed-pull-requests">
+              0 <span>reviewed</span>
+            </h3>
 
-        <h3 class="pull-requests-count pending-pull-requests">
-          0 <span>pending</span>
-        </h3>
+            <h3 class="pull-requests-count pending-pull-requests">
+              0 <span>pending</span>
+            </h3>
 
-        <div class="loader">
-          <%= image_tag 'ajax-loader.gif' %>
-        </div>
-      </li>
+            <div class="loader">
+              <%= image_tag 'ajax-loader.gif' %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="no-repositories-associated">No repositories associated.</p>
     <% end %>
-  </ul>
 </div>
