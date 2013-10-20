@@ -32,7 +32,7 @@ class PullRequestUserReview
   #
   # TODO: perform pagination
   def code_reviews
-    @code_reviews ||= client.issue_comments(repo, number)
+    @code_reviews ||= client.pull_comments(repo, number)
   end
 
   # Public: returns users that reviewed the code on pull request.
@@ -52,7 +52,7 @@ class PullRequestUserReview
 
   # Public: returns the list of users that approved the pull request.
   def users_approval
-    approval_comments.index_by { |comment| comment.user.login }.keys
+    @users_approval ||= approval_comments.index_by { |comment| comment.user.login }.keys
   end
 
   # Public: returns the number of approvals required.
