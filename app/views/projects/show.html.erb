@@ -6,6 +6,20 @@
     <h3 class="page-content-subtitle"><%= pluralize(@repositories.size, 'repository') %> associated</h3>
   </header>
 
+  <div class="project-details">
+    <div class="project-approval-criteria">
+      <strong>Pull Request approval criteria:</strong> <%= @project.required_approvals %> &times;
+      <%= emoji_tag @project.approval_emoji, Emoji.new(@project.approval_emoji).url %>
+    </div>
+
+    <ul class="review-status-legend">
+      <li class="pending-legend">Pending</li>
+      <li class="reviewed-legend">Reviewed</li>
+      <li class="shipable-legend">Shipable</li>
+      <li class="approved-legend">Approved</li>
+    </ul>
+  </div>
+
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
       <li class="project-repository-item" data-load='<%= async_project_repository_path(@project, repository) %>'>

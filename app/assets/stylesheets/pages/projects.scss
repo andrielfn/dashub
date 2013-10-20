@@ -2,3 +2,74 @@
   @extend %reset-space;
   @extend %clearfix;
 }
+
+.project-details {
+  height: em(30);
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: em(14);
+  line-height: em(30);
+}
+
+.project-approval-criteria {
+  position: relative;
+  float: left;
+
+  img {
+    position: relative;
+    top: 3px;
+  }
+}
+
+.review-status-legend {
+  float: right;
+  margin: 0;
+}
+
+.approved-legend,
+.reviewed-legend,
+.shipable-legend,
+.pending-legend {
+  float: left;
+  padding: 0;
+  margin-right: 10px;
+  list-style: none;
+
+  &:before {
+    content: ' ';
+    display: inline-block;
+    margin-bottom: -2px;
+    margin-right: 5px;
+    border-width: 1px;
+    border-style: solid;
+    width: 10px;
+    height: 10px;
+  }
+}
+
+.pending-legend {
+  // color: #a7120f;
+
+  &:before {
+    border-color: #a7120f;
+    background-color: #fff2ec;
+  }
+}
+
+.reviewed-legend {
+  // color: #ecba09;
+
+  &:before {
+    border-color: #ecba09;
+    background-color: #fdffea;
+  }
+}
+
+.shipable-legend {
+  // color: #59A80F;
+
+  &:before {
+    border-color: #59A80F;
+    background-color: #effceb;
+  }
+}
