@@ -2,29 +2,27 @@
 
 <ul class="projects-list">
   <% @projects.each do |project| %>
-    <li>
-      <div class="project-box">
-          <%= link_to 'Settings', '', class: 'project-box-settings-button' %>
-          <ul class="project-box-settings-menu">
-            <li><%= link_to 'Add new repository', new_project_repository_path(project), class: 'project-box-settings-menu-new-repository' %></li>
-            <li><%= link_to 'Edit this project', edit_project_path(project), class: 'project-box-settings-menu-edit' %></li>
-            <li><%= link_to 'Remove this project', project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'project-box-settings-menu-delete' %></li>
-          </ul>
+    <li class="project-box">
+      <%= link_to 'Settings', '', class: 'project-box-settings-button' %>
+      <ul class="project-box-settings-menu">
+        <li><%= link_to 'Add new repository', new_project_repository_path(project), class: 'project-box-settings-menu-new-repository' %></li>
+        <li><%= link_to 'Edit this project', edit_project_path(project), class: 'project-box-settings-menu-edit' %></li>
+        <li><%= link_to 'Remove this project', project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'project-box-settings-menu-delete' %></li>
+      </ul>
 
-          <h2 class="project-box-title">
-            <%= link_to truncate(project.name, length: 50), project_path(project) %>
-          </h2>
+      <h2 class="project-box-title">
+        <%= link_to truncate(project.name, length: 50), project_path(project) %>
+      </h2>
 
-          <% if project.repositories.present? %>
-            <ul class="repositories-list">
-              <% project.repositories.each do |repository| %>
-                <li><%= link_to truncate(repository.full_name, length: 30), repo_url(repository), target: '_blank', title: repository.full_name %></li>
-              <% end %>
-            </ul>
-          <% else %>
-            <p class="no-repositories-associated">No repositories associated.</p>
+      <% if project.repositories.present? %>
+        <ul class="repositories-list">
+          <% project.repositories.each do |repository| %>
+            <li><%= link_to truncate(repository.full_name, length: 30), repo_url(repository), target: '_blank', title: repository.full_name %></li>
           <% end %>
-      </div>
+        </ul>
+      <% else %>
+        <p class="no-repositories-associated">No repositories associated.</p>
+      <% end %>
     </li>
   <% end %>
 </ul>
