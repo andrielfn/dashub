@@ -4,7 +4,7 @@
   <div id="content" class="call-to-action">
     <h1>Dashub a better way to manage your projects pull requests review</h1>
 
-    <button class="start-using-btn">Start using Dashub</button>
+    <%= link_to 'Start using Dashub', user_omniauth_authorize_path(:github), class: 'start-using-btn' %>
   </div>
 
   <div class="features no-margin section">
@@ -66,6 +66,6 @@
   </div>
 
   <div class="section call-to-action">
-    <button class="start-using-btn">Create your project now!</button>
+    <%= link_to 'Create your project now!', user_omniauth_authorize_path(:github), class: 'start-using-btn' %>
   </div>
 </div>
