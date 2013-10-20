@@ -13,7 +13,8 @@ class SuggestedRepositories
   private
 
   def client
-    @client ||= Octokit::Client.new(access_token: @user.provider_token)
+    @client ||= Octokit::Client.new(access_token: @user.provider_token,
+                                    middleware: Octokit::Default::MIDDLEWARE)
   end
 
   def remove_project_repos_from_user_ones
