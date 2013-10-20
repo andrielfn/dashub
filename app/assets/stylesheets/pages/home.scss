@@ -1,6 +1,7 @@
 .top-bg {
-  background: image_url('home-bg.png') no-repeat 100% center;
-  background-size: 100%;
+  background: image_url('home-bg.png') no-repeat 100% center fixed;
+  background-size: cover;
+  background-position: 0 0;
 }
 
 .white-bg {
