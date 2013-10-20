@@ -1,0 +1,50 @@
+.header-navigation {
+  float: left;
+}
+
+.header-navigation ul {
+  @extend %reset-space;
+}
+
+.header-navigation li {
+  float: left;
+  list-style: none;
+}
+
+.header-navigation a {
+  font-size: em(14);
+  display: block;
+  padding: 16px 18px;
+  text-transform: uppercase;
+  color: #FFF;
+
+  &:hover {
+    color: #FFF;
+    opacity: 0.7;
+  }
+}
+
+.header-navigation-right {
+  float: right;
+}
+
+.header-navigation-right a {
+  text-transform: none;
+}
+
+.my-projects-link {
+  background: url('repositories.png') no-repeat left center;
+}
+
+.new-project-link {
+  background: url('new-repository.png') no-repeat left center;
+}
+
+.header-navigation-right .github-signin-link {
+  background: image-url('github.png') no-repeat left center;
+
+  &:hover {
+    color: #FFF;
+    opacity: 0.7;
+  }
+}

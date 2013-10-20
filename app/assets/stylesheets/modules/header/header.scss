@@ -4,17 +4,22 @@ $main-header-height: 50px;
   height: $main-header-height;
   background-color: $main-header-background;
   margin-bottom: 20px;
+  border-bottom: 2px solid #000;
 }
 
-.main-header a,
-.main-header a:visited,
 .main-header a:hover {
-  color: #FFF;
   text-decoration: none;
 }
 
 .main-header .logo {
   @extend %reset-space;
+  font-size: em(32);
   float: left;
   line-height: $main-header-height;
+  font-weight: 300;
+  margin-right: 50px;
+
+  a {
+    color: #FFFFFF;
+  }
 }

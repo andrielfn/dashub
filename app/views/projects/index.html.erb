@@ -3,14 +3,11 @@
 <ul class="projects-list">
   <% @projects.each do |project| %>
     <li class="project-box">
-      <h2 class="project-box-title">
-        <%= link_to truncate(project.name, length: 50), project_path(project), class: 'project-box-title-link' %>
-      </h2>
+      <%= link_to 'Settings', edit_project_path(project), class: 'project-box-settings-button' %>
 
-      <footer class="project-box-footer">
-        <%= link_to 'Repositories', new_project_repository_path(project), class: 'project-box-new-repository' %>
-        <%= link_to 'Settings', edit_project_path(project), class: 'project-box-settings' %>
-      </footer>
+      <h2 class="project-box-title">
+        <%= link_to truncate(project.name, length: 50), project_path(project) %>
+      </h2>
     </li>
   <% end %>
 </ul>

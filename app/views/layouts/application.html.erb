@@ -27,20 +27,20 @@
         <%# check for user_signed_in? after RailsRumble %>
         <nav class="header-navigation">
           <ul>
-            <li><%= link_to 'My projects', projects_path %></li>
-            <li><%= link_to 'New project', new_project_path %></li>
+            <li><%= link_to 'My projects', projects_path, class: 'my-projects-link' %></li>
+            <li><%= link_to 'New project', new_project_path, class: 'new-project-link' %></li>
           </ul>
         </nav>
 
-        <% if user_signed_in? %>
-          <ul style="float:right; list-style: none;">
-            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+        <nav class="header-navigation header-navigation-right ">
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+            <% else %>
+              <li><%= link_to 'Sign in with GitHub', user_omniauth_authorize_path(:github), class: 'github-signin-link' %></li>
+            <% end %>
           </ul>
-        <% else %>
-          <ul style="float:right; list-style: none;">
-            <li><%= link_to 'Login', user_omniauth_authorize_path(:github) %></li>
-          </ul>
-        <% end %>
+        </nav>
       </div>
     </header>
 

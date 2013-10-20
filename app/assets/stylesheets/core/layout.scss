@@ -11,6 +11,8 @@
 }
 
 .page-content-title {
+  font-weight: 300;
+  border-bottom: 1px dotted $main-text-color;
   @extend %reset-space;
 }
 

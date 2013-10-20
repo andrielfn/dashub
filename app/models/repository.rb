@@ -1,6 +1,6 @@
 class Repository < ActiveRecord::Base
   GH_API_PER_PAGE = 30
-  SUGGESTED_EMOJIS = ['thumbsup', 'shipit', '100', 'smile', 'heart']
+  SUGGESTED_EMOJIS = ['+1', 'shipit', '100', 'smile', 'heart']
 
   validates :full_name,
     presence: true,
