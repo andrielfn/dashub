@@ -7,7 +7,7 @@ Dashub::Application.routes.draw do
     get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
   end
 
-  resources :projects, except: :destroy do
+  resources :projects do
     resources :repositories, only: [:new, :create, :destroy] do
       member do
         get 'async'

@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
   def destroy
     @project = Project.find(params[:id])
     # TODO: remove this after RailsRumble (guest user)
-    @project.destroy unless user_signed_in?
+    @project.destroy if user_signed_in?
 
     redirect_to projects_path
   end
