@@ -22,7 +22,8 @@
   </datalist>
 
   <%= simple_form_for @project, class: 'new-project' do |f| %>
-    <%= f.input :name, label: 'Project name', placeholder: 'Project name', input_html:{ maxlength: 50 } %>
+    <%= f.input :name, label: 'Project name',
+      placeholder: 'Project name', input_html:{ autofocus: true, maxlength: 50 } %>
 
     <div class="approval-emoji">
       <%= f.input :approval_emoji,
