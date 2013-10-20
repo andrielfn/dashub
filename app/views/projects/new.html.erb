@@ -1,31 +1,45 @@
-<div class='new-project'>
-  <datalist id='all-emojis'>
+<% content_for :javascript do %>
+  <script>
+    new Emoji(
+      $('.approval-emoji input'),
+      $('.emoji-list a'),
+      $('#all-emojis')
+    );
+  </script>
+<% end %>
+
+<div class="content-box">
+  <header class="page-content-header">
+    <h1 class="page-content-title">Add new project</h1>
+  </header>
+
+  <datalist id="all-emojis">
     <% @all_emojis.each do |emoji| %>
       <%= tag :option, value: emoji.first, data: { url: emoji.last } %>
     <% end %>
   </datalist>
 
-  <%= simple_form_for @project do |f| %>
-    <h3>Project name</h3>
-    <%= f.input :name, label: false, placeholder: 'Example: Ruby projects', input_html:{ maxlength: 50 } %>
+  <%= simple_form_for @project, class: 'new-project' do |f| %>
+    <%= f.input :name, label: 'Project name', placeholder: 'Project name', input_html:{ maxlength: 50 } %>
 
-    <h3>Approval emoji</h3>
-    <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji', input_html: { list: 'all-emojis' } %>
+    <div class="approval-emoji">
+      <%= f.input :approval_emoji,
+        label: 'Approval emoji',
+        input_html: { list: 'all-emojis' },
+        placeholder: 'shipit'
+      %>
 
-    <h3>Popular choices</h3>
-    <div class='emoji-list' id='emoji-list'>
-      <% @suggested_emojis.each do |emoji| %>
-        <%= content_tag :span, class: 'emoji', data: { emoji: emoji.name } do %>
-          <%= emoji_tag(emoji.name, emoji.url, width: 50) %>
+      <div class='emoji-list' id='emoji-list'>
+        <h4>Suggestions. Click to select:</h4>
+        <% @suggested_emojis.each do |emoji| %>
+          <%= link_to '#', class: 'emoji', data: { emoji: emoji.name } do %>
+            <%= emoji_tag(emoji.name, emoji.url, width: 30) %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
 
-    <div class='approval-rules'>
-      <h3>Approval Rule</h3>
-      <%= f.input :required_approvals, label: false, collection: 1..5, as: :select %>
-      <%= emoji_tag(@default_emoji.name, @default_emoji.url, id: 'chosen-emoji', class: 'chosen-emoji') %>
-    </div>
+    <%= f.input :required_approvals, label: 'Approval rule', collection: 1..5, as: :select %>
 
     <%= f.submit 'Create' %>
   <% end %>
