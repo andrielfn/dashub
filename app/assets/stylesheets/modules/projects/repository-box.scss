@@ -7,15 +7,7 @@
   @extend %clearfix;
   @extend %reset-space;
 
-  -webkit-column-count: 2;
-  -webkit-column-rule: 0;
-  -webkit-column-gap: 20px;
-  -moz-column-count: 2;
-  -moz-column-rule: 0;
-  -moz-column-gap: 20px;
-  column-count: 2;
-  column-rule: 0;
-  column-gap: 20px;
+  @include columns(2 20px);
 
   display: block;
 }
@@ -23,16 +15,13 @@
 .project-repository-item {
   @extend %box-sizing;
   border: 1px solid #DDD;
-  float: left;
   width: 450px;
   list-style: none;
   margin-bottom: 20px;
   position: relative;
-  -webkit-column-break-inside: avoid;
 
-  &:nth-child(2) {
-    margin-right: 0;
-  }
+  display: block;
+  -webkit-column-break-inside: avoid;
 }
 
 .project-repositories-item-org {
