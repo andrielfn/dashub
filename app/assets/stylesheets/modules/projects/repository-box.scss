@@ -148,3 +148,9 @@
   height: 16px;
   background: image-url('pr-statuses.png') no-repeat;
 }
+
+.project-repository-item .loader.error {
+  font-style: italic;
+  font-size: em(14);
+  color: #A7120F;
+}

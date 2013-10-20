@@ -3,8 +3,14 @@
 <% content_for :javascript do %>
   <%= javascript_tag do %>
     $('[data-load]').each(function() {
-      var url = $(this).data('load');
-      $(this).load(url);
+      var repository = $(this),
+          url = repository.data('load');
+
+      repository.load(url, function(_response, status) {
+        if (status === 'error') {
+          repository.find('.loader').addClass('error').html('Something went wrong. Please try again.');
+        }
+      });
     });
   <% end %>
 <% end %>
