@@ -15,10 +15,10 @@ module ProjectHelper
     pull_request_status = pull_request_status(pull_request)
 
     descriptions = {
-      'approved' => 'Reviewed by you and ready to merge',
+      'approved' => 'Reviewed and approved by you',
       'reviewed' => 'Reviewed but waiting for your approval',
-      'shippable' => 'Ready to merge, but not reviewed by you',
-      'pending' => 'No one reviewed yet'
+      'shippable' => 'Ready to merge, but not yet reviewed by you',
+      'pending' => 'Waiting for you review'
     }
 
     descriptions[pull_request_status]
