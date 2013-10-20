@@ -56,8 +56,13 @@ body {
 
 .page-footer {
   font-size: em(12);
+  margin-bottom: 20px;
 
   a, a:hover {
     text-decoration: underline;
+  }
+
+  p {
+    margin: 0;
   }
 }
