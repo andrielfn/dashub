@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dashub</title>
+    <title><%= content_for(:page_title) || 'Your Pull Request Statuses Dashboard' %> - Dashub</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= csrf_meta_tags %>
