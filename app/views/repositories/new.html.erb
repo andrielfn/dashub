@@ -4,7 +4,7 @@
   </header>
 
   <%= simple_form_for [@project, @repository], class: 'new-repository' do |f| %>
-      <%= f.input :fullname,
+      <%= f.input :full_name,
         input_html: { autofocus: true },
         required: false,
         placeholder: 'owner/repo',
@@ -26,7 +26,7 @@
   <ul>
     <% @repositories.each do |repository| %>
       <li>
-        <%= link_to repository.fullname, repo_url(repository) %>
+        <%= link_to repository.full_name, repo_url(repository) %>
         <%= link_to '(Revoke)', project_repository_path(@project, repository), data: { method: :delete } %>
       </li>
     <% end %>

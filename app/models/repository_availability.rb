@@ -8,7 +8,7 @@ class RepositoryAvailability
   def available_for?(current_user)
     @current_user = current_user
 
-    client.repository?(repository.fullname)
+    client.repository?(repository.full_name)
   end
 
   private

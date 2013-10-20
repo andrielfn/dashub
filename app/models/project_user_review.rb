@@ -18,7 +18,7 @@ class ProjectUserReview
     @repositories ||= @project.repositories.map do |repo|
       next unless RepositoryAvailability.new(repo).available_for?(user)
 
-      RepositoryUserReview.new(repo.fullname, @user, @project)
+      RepositoryUserReview.new(repo.full_name, @user, @project)
     end.compact
   end
 end

@@ -7,7 +7,7 @@ class RepositoryUserReview
     @project = project
   end
 
-  alias :fullname :repo
+  alias :full_name :repo
 
   # True if the repository has `GH_API_PER_PAGE` open pull requests and there is
   # a next page.

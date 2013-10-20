@@ -19,7 +19,7 @@ class SuggestedRepositories
   def remove_project_repos_from_user_ones
     repos = []
     user_repos = client.repositories
-    added_repos = @project.repositories.map(&:fullname)
+    added_repos = @project.repositories.map(&:full_name)
 
     user_repos.each do |repo|
       unless added_repos.include?(repo.full_name)
