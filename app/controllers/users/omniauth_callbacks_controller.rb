@@ -14,10 +14,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protected
 
   def after_omniauth_failure_path_for(scope)
-    root_path
+    projects_path
   end
 
   def after_sign_in_path_for(resource)
-    root_path
+    projects_path
   end
 end
