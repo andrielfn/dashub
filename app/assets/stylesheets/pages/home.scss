@@ -109,11 +109,6 @@
   color: #fff;
 }
 
-.completed-step {
-  text-align: center;
-  font-size: em(40);
-}
-
 .start-using-btn {
   display: inline-block;
   margin: 20px 0;
@@ -125,10 +120,14 @@
   border-radius: 5px;
   font-size: em(24);
   font-weight: 300;
+
+  &:hover {
+    background-color: #216E8D;
+  }
 }
 
 .call-to-action {
-  padding: 20px 0;
+  padding: 30px 0;
   text-align: center;
 }
 
@@ -147,4 +146,8 @@
   p {
     margin-top: 0;
   }
+}
+
+.page-footer {
+  margin-top: 30px;
 }

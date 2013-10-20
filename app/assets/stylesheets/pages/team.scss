@@ -3,6 +3,7 @@
 }
 
 .team-members {
+  @extend %clearfix;
   clear: left;
 }
 
