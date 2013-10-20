@@ -16,8 +16,7 @@ class RepositoriesController < ApplicationController
     access_availability = RepositoryAvailability.new(@repository)
 
     if access_availability.available_for?(current_user_or_guest_user)
-      # TODO: remove this after RailsRumble (guest user)
-      if !user_signed_in? || @repository.save
+      if @repository.save
         redirect_to new_project_repository_path(@project), notice: 'Repository created successfully.'
         return
       end
@@ -33,8 +32,7 @@ class RepositoriesController < ApplicationController
   def destroy
     @project = current_user_or_guest_user.projects.find(params[:project_id])
     repository = @project.repositories.find(params[:id])
-    # TODO: remove this after RailsRumble (guest user)
-    repository.delete if user_signed_in?
+    repository.destroy
 
     redirect_to new_project_repository_path(@project), notice: 'Repository deleted successfully.'
   end

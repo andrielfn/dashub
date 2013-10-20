@@ -22,8 +22,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user_or_guest_user.projects.build(project_params)
 
-    # TODO: remove this after RailsRumble (guest user)
-    if !user_signed_in? || @project.save
+    if @project.save
       redirect_to projects_path
     else
       load_emojis
@@ -41,8 +40,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
 
-    # TODO: remove this after RailsRumble (guest user)
-    if !user_signed_in? || @project.update_attributes(project_params)
+    if @project.update_attributes(project_params)
       redirect_to projects_path
     else
       render 'new'
@@ -51,8 +49,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     @project = Project.find(params[:id])
-    # TODO: remove this after RailsRumble (guest user)
-    @project.destroy if user_signed_in?
+    @project.destroy
 
     redirect_to projects_path
   end
