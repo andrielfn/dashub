@@ -3,14 +3,14 @@ class RepositoriesController < ApplicationController
   # before_filter :authenticate_user!
 
   def new
-    @project = Project.find(params[:project_id])
+    @project = current_user_or_guest_user.projects.find(params[:project_id])
     @repository = Repository.new
     @repositories = @project.repositories
     @suggested_repos = SuggestedRepositories.new(current_user_or_guest_user, @project).repos
   end
 
   def create
-    @project = Project.find(params[:project_id])
+    @project = current_user_or_guest_user.projects.find(params[:project_id])
     @repository = @project.repositories.new(repository_params)
 
     access_availability = RepositoryAvailability.new(@repository)
@@ -31,7 +31,7 @@ class RepositoriesController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:project_id])
+    @project = current_user_or_guest_user.projects.find(params[:project_id])
     repository = @project.repositories.find(params[:id])
     repository.delete unless user_signed_in?
 
