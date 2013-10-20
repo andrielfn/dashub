@@ -113,3 +113,20 @@
   padding: 20px 0;
   text-align: center;
 }
+
+.understand-statuses img {
+  float: left;
+}
+
+.understand-statuses-detail {
+  float: right;
+  width: 490px;
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p {
+    margin-top: 0;
+  }
+}

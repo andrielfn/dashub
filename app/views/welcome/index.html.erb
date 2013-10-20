@@ -41,34 +41,59 @@
   </div>
 </div>
 
-<div class="features section">
-  <h2>How to use it?</h2>
+<div class="features section understand-statuses">
+  <h2>Project Pull Request Status View</h2>
 
-  <p>It is pretty simple to use Dashub to track your projects.</p>
+  <p>All repository pull requests statuses are related to <strong>you</strong>,
+  the same repository may have different results depending on the user logged in.</p>
 
-  <div class="getting-started-step">
-    <h3><span class="step-number">1</span> Access with your Github account</h3>
-    <p>We will not store any of your data, we just need read access to your Github account in order
-    to start tracking your pull requests.</p>
-    <%= image_tag 'dashub-step-1.png' %>
+  <%= image_tag 'dashub-statuses.png', size: '450x365', align: 'left', alt: 'Pull Request statuses', title: 'Pull Request statuses' %>
+
+  <div class="understand-statuses-detail">
+    <h3>Pending</h3>
+    <p>These are your top priority because you didn't check it yet, so it is waiting your review.</p>
+
+    <h3>Reviewed</h3>
+    <p>You already reviewed this Pull Request, but you didn't considered as ready to ship, so you are
+    still waiting for code update, so that you review it late.</p>
+
+    <h3>Shippable</h3>
+    <p>You didn't check out this Pull Request, but your collegues already review and approved it, and
+    fullfilled the project approval criteria.</p>
+
+    <h3>Approved</h3>
+    <p>You already approved the Pull Request, so there is nothing to do.</p>
   </div>
-
-  <div class="getting-started-step">
-    <h3><span class="step-number">2</span> Create a project</h3>
-    <p>Give your project a name, and decide what your team uses to approve a pull request, allow it to be merged.</p>
-  </div>
-
-  <div class="getting-started-step">
-    <h3><span class="step-number">3</span> Add repositories</h3>
-    <p>Add the repositories that are part of your project, or use the suggestion repositories that
-    you have access to.</p>
-  </div>
-
-  <h3 class="completed-step">Done!</h3>
 </div>
 
 <div class="white-bg">
+  <div class="features section">
+    <h2>How to use it?</h2>
+
+    <p>It is pretty simple to use Dashub to track your projects.</p>
+
+    <div class="getting-started-step">
+      <h3><span class="step-number">1</span> Access with your Github account</h3>
+      <p>We will not store any of your data, we just need read access to your Github account in order
+      to start tracking your pull requests.</p>
+      <%= image_tag 'dashub-step-1.png' %>
+    </div>
+
+    <div class="getting-started-step">
+      <h3><span class="step-number">2</span> Create a project</h3>
+      <p>Give your project a name, and decide what your team uses to approve a pull request, allow it to be merged.</p>
+    </div>
+
+    <div class="getting-started-step">
+      <h3><span class="step-number">3</span> Add repositories</h3>
+      <p>Add the repositories that are part of your project, or use the suggestion repositories that
+      you have access to.</p>
+    </div>
+
+    <h3 class="completed-step">Done!</h3>
+  </div>
+</div>
+
   <div class="section call-to-action">
     <%= link_to 'Create your project now!', user_omniauth_authorize_path(:github), class: 'start-using-btn' %>
   </div>
-</div>
