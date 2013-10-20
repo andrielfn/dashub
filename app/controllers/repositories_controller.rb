@@ -42,7 +42,7 @@ class RepositoriesController < ApplicationController
     project = current_user_or_guest_user.projects.find(params[:project_id])
     @repository = project.repositories.find(params[:id])
 
-    @repository_review = RepositoryUserReview.new(@repository.fullname, current_user_or_guest_user, project)
+    @repository_review = RepositoryUserReview.new(@repository.full_name, current_user_or_guest_user, project)
 
     render layout: false
   end
