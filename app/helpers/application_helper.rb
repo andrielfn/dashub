@@ -23,4 +23,9 @@ module ApplicationHelper
 
     messages.html_safe
   end
+
+  def gravatar_url(email, size = '48')
+    gravatar_id = Digest::MD5.hexdigest(email)
+    "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
+  end
 end

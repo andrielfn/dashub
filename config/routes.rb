@@ -1,6 +1,5 @@
 Dashub::Application.routes.draw do
-  get "welcome/index"
-  root to: 'welcome#index'
+  get 'team' => 'welcome#team'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
@@ -14,4 +13,6 @@ Dashub::Application.routes.draw do
       end
     end
   end
+
+  root to: 'welcome#index'
 end
