@@ -21,3 +21,11 @@
 .revoke-repository {
   color: #900;
 }
+
+.project-title-link {
+  font-weight: bold;
+
+  &:hover {
+    background: #EBE6D7;
+  }
+}
