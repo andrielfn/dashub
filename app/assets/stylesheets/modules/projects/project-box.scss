@@ -31,4 +31,62 @@
   width: 16px;
   height: 16px;
   background: image-url('cog.png') no-repeat center center;
+  border-left: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+}
+
+.project-box-settings-menu {
+  @extend %reset-space;
+  width: 150px;
+  display: none;
+  position: absolute;
+  top: 24px;
+  right: -1px;
+  background-color: #FFF;
+  z-index: 1;
+  border: 1px solid #DDD;
+}
+
+.project-box-settings-menu li {
+  list-style: none;
+
+  a {
+    padding: 4px 0 4px 22px;
+    display: block;
+    font-size: em(12);
+    border-bottom: 1px solid #DDD;
+    color: $main-text-color;
+
+    &:hover {
+      text-decoration: none;
+      background-color: #EEE;
+    }
+  }
+
+  &:last-child a {
+    border-bottom: none;
+  }
+}
+
+.project-box-settings-button:hover {
+  z-index: 2;
+  border-bottom: 1px solid #FFF;
+}
+
+.project-box-settings-button:hover + .project-box-settings-menu,
+.project-box-settings-menu:hover {
+  display: block;
+}
+
+.project-box-settings-menu-delete {
+  background: image-url('trash.png') no-repeat 6px center;
+}
+
+.project-box-settings-menu-edit {
+  background: image-url('pencil.png') no-repeat 6px center;
+}
+
+
+.project-box-settings-menu-new-repository {
+  background: image-url('new-repository.png') no-repeat 6px center;
 }
