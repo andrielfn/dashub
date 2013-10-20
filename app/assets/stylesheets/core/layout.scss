@@ -61,15 +61,33 @@
   }
 
   p {
-    margin: 0;
-  }
-
-  .meet-us {
-    display: block;
     margin-top: 10px;
-    font-size: 18px;
-    font-style: italic;
-    font-family: "Marker Felt", sans-serif;
+  }
+}
+
+.meet-us {
+  font-size: 18px;
+  font-style: italic;
+  font-family: "Marker Felt", sans-serif;
+}
+
+.ribbon {
+  @include transform(rotate(45deg));
+  margin: 0;
+  padding: 1px 0;
+  position: fixed;
+  top: 25px;
+  right: -50px;
+  background: #ecba09;
+  border: 1px dashed #000;
+
+  a {
+    border: 1px dashed #000;
+    color: #48413a;
+    width: 180px;
+    display: block;
+    text-align: center;
+    padding: 5px;
   }
 }
 
