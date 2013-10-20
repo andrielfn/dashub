@@ -1,8 +1,9 @@
-Emoji = function(input, suggestionList, allEmojis) {
+Emoji = function(input, suggestionList, initialEmoji, allEmojis) {
   this.input = input;
   this.suggestionList = suggestionList;
   this.allEmojis = allEmojis;
 
+  this.changeInputBackground(initialEmoji);
   this.addEventListeners();
 }
 
@@ -11,9 +12,9 @@ Emoji.prototype.addEventListeners = function() {
   this.suggestionList.on("click", this.clickOnSuggestedEmojis.bind(this));
 }
 
-Emoji.prototype.changeEmojiFromInput = function() {
+Emoji.prototype.changeEmojiFromInput = function(event) {
   var emoji = $(event.target).val();
-  this.input.css('background-image', "url(" + this.getEmojiURL(emoji) + ")");
+  this.changeInputBackground(emoji);
 }
 
 Emoji.prototype.clickOnSuggestedEmojis = function(event) {
