@@ -11,6 +11,11 @@
   margin: 5px;
   background: #d4d4d4;
   cursor: pointer;
+
+  &.selected {
+    background-color: #59A80F;
+    color: #fff;
+  }
 }
 
 .revoke-repository {
