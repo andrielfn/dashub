@@ -41,6 +41,16 @@
   @extend %reset-space;
 }
 
+.no-pull-request {
+  margin: 0;
+  padding: 10px 0;
+  border-top: 1px solid #efefef;
+  font-style: italic;
+  text-align: center;
+  font-size: em(12);
+  color: #ccc;
+}
+
 .pull-request-item {
   padding: 10px 0 10px 15px;
   border-top: 1px solid #EFEFEF;
