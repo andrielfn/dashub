@@ -1,3 +1,0 @@
-== Dashub
-
-A better view of Github pull requests to your projects.
