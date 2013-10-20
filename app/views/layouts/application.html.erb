@@ -13,21 +13,23 @@
           <%= link_to 'Dashub', root_path %>
         </h1>
 
-          <% if user_signed_in? %>
-            <nav class="header-navigation">
-              <ul>
-                <li><%= link_to 'My projects', projects_path %></li>
-                <li><%= link_to 'New project', new_project_path %></li>
-              </ul>
-            </nav>
-            <ul style="float:right; list-style: none;">
-              <li><%= link_to 'Sign out', destroy_user_session_path %></li>
-            </ul>
-          <% else %>
-            <ul style="float:right; list-style: none;">
-              <li><%= link_to 'Login', user_omniauth_authorize_path(:github) %></li>
-            </ul>
-          <% end %>
+        <%# check for user_signed_in? after RailsRumble %>
+        <nav class="header-navigation">
+          <ul>
+            <li><%= link_to 'My projects', projects_path %></li>
+            <li><%= link_to 'New project', new_project_path %></li>
+          </ul>
+        </nav>
+
+        <% if user_signed_in? %>
+          <ul style="float:right; list-style: none;">
+            <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+          </ul>
+        <% else %>
+          <ul style="float:right; list-style: none;">
+            <li><%= link_to 'Login', user_omniauth_authorize_path(:github) %></li>
+          </ul>
+        <% end %>
       </div>
     </header>
 
