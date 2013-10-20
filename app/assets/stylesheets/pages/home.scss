@@ -1,3 +1,12 @@
+.features h2,
+.features p {
+  font-weight: 300;
+}
+
+.features h3 {
+  font-weight: 400;
+}
+
 .top-bg {
   background: image_url('home-bg.png') no-repeat 100% center fixed;
   background-size: cover;
@@ -7,6 +16,7 @@
 .white-bg {
   background: #fff;
   border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .dark-bg {
@@ -27,12 +37,13 @@
 .slogan {
   margin: 60px auto;
   padding: 15px;
-  width: 600px;
   line-height: 1.8;
   background: #48413a;
   opacity: 0.7;
   color: #fff;
   border-radius: 5px;
+  font-family: $lato;
+  font-weight: 100;
 }
 
 .home .main-header {
@@ -55,6 +66,7 @@
 
 .section h3 + p {
   margin-top: 0px;
+  margin-bottom: 30px;
 }
 
 .home .section {
@@ -63,14 +75,19 @@
 }
 
 .features.section .feature {
-  width: 220px;
+  width: 320px;
   float: left;
-  margin-left: 60px;
-  margin-right: 20px;
+  text-align: center;
 }
 
 .feature p {
-  text-align: center;
+  font-weight: 300;
+  width: 220px;
+  margin: 0 auto;
+}
+
+.feature img {
+  border: 10px solid #FFF;
 }
 
 .getting-started-step {
@@ -102,11 +119,12 @@
   margin: 20px 0;
   text-align: center;
   padding: 15px 40px;
-  background-color: #48413A;
+  background-color: #3299BB;
   border: none;
   color: #fff;
   border-radius: 5px;
   font-size: em(24);
+  font-weight: 300;
 }
 
 .call-to-action {
