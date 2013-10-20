@@ -5,28 +5,30 @@
   <%= link_to @repository.name, repo_url(@repository) , target: '_blank' %>
 </h2>
 
-<h3 class="pull-requests-box-count reviewed-pull-requests">
-  <%= @repository_review.pull_requests_reviewed.count %> <span>reviewed</span>
-</h3>
+<% cache(@repository_review) do %>
+  <h3 class="pull-requests-box-count reviewed-pull-requests">
+    <%= @repository_review.pull_requests_reviewed.count %> <span>reviewed</span>
+  </h3>
 
-<h3 class="pull-requests-box-count pending-pull-requests">
-  <%= @repository_review.pull_requests_missing_review.count %> <span>pending</span>
-</h3>
+  <h3 class="pull-requests-box-count pending-pull-requests">
+    <%= @repository_review.pull_requests_missing_review.count %> <span>pending</span>
+  </h3>
 
-<% if @repository_review.priorited_pull_requests.empty? %>
-  <p class="no-pull-request">No pull requests to review</p>
-<% else %>
-  <ul class="project-repositories">
-    <% @repository_review.priorited_pull_requests.each do |pull_review| %>
-      <li class='pull-request-item <%= pull_request_status(pull_review) %>'>
-        <%= link_to  pull_review.url, target: '_blank', class: 'pull-request-item-title' do %>
-          <strong><%= "##{pull_review.pull_request.number}" %></strong> <%= pull_review.title %>
-        <% end %>
+  <% if @repository_review.priorited_pull_requests.empty? %>
+    <p class="no-pull-request">No pull requests to review</p>
+  <% else %>
+    <ul class="project-repositories">
+      <% @repository_review.priorited_pull_requests.each do |pull_review| %>
+        <li class='pull-request-item <%= pull_request_status(pull_review) %>'>
+          <%= link_to  pull_review.url, target: '_blank', class: 'pull-request-item-title' do %>
+            <strong><%= "##{pull_review.pull_request.number}" %></strong> <%= pull_review.title %>
+          <% end %>
 
-        <time datetime="pull_review.open_date" class="pull-request-open-date">
-          <%= distance_of_time_in_words(pull_review.open_date, Time.current) %> ago
-        </time>
-      </li>
-    <% end %>
-  </ul>
+          <time datetime="pull_review.open_date" class="pull-request-open-date">
+            <%= distance_of_time_in_words(pull_review.open_date, Time.current) %> ago
+          </time>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
 <% end %>

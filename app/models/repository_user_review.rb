@@ -56,6 +56,11 @@ class RepositoryUserReview
     partitioned_pull_requests[:missing_review]
   end
 
+  def cache_key
+    etag = PullRequestEtag.new(repo, user.provider_token).etag
+    "pull_request_user_review-#{project.name}-#{repo}-#{etag}"
+  end
+
   private
 
   # Internal: partition the repository pull requests into different stacks.
