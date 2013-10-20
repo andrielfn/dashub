@@ -25,6 +25,7 @@ class RepositoriesController < ApplicationController
       flash.now[:alert] = "Couldn't find this repository :("
     end
 
+    @suggested_repos = SuggestedRepositories.new(current_user_or_guest_user, @project).repos
     @repositories = @project.repositories(true)
     render action: :new
   end
