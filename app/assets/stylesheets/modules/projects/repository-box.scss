@@ -13,11 +13,23 @@
   }
 }
 
+.project-repositories-item-org {
+  @extend %reset-space;
+  padding: 9px 15px 0;
+  font-size: em(12);
+  font-weight: 300;
+
+  a, a:visited {
+    color: #333;
+  }
+}
+
 .project-repositories-item-title {
   @extend %reset-space;
   font-weight: 600;
-  font-size: em(30);
-  padding: 10px 0 9px 15px;
+  font-size: em(24);
+  padding: 0 0 9px 15px;
+  line-height: 1;
 
   a, a:visited {
     color: #333;

@@ -9,8 +9,11 @@
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
       <li class="project-repository-item" data-load='<%= async_project_repository_path(@project, repository) %>'>
+        <h4 class="project-repositories-item-org">
+          <%= link_to repository.owner, organization_url(repository), target: '_blank' %> /
+        </h4>
         <h2 class="project-repositories-item-title">
-          <%= link_to repository.full_name, repo_url(repository) , target: '_blank' %>
+          <%= link_to repository.name, repo_url(repository) , target: '_blank' %>
         </h2>
 
         <h3 class="pull-requests-box-count approved-pull-requests">

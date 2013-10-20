@@ -4,6 +4,10 @@ module ApplicationHelper
   end
   alias :repo_url :github_repository_url
 
+  def organization_url(repository)
+    "#{github_url}#{repository.owner}"
+  end
+
   def github_url
     "http://github.com/"
   end

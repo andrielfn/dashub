@@ -9,6 +9,16 @@ class Repository < ActiveRecord::Base
 
   belongs_to :project
 
+  # Public: returns the repository owner.
+  def owner
+    @owner ||= full_name.split('/').first
+  end
+
+  # Public: returns the repository name.
+  def name
+    @name ||= full_name.split('/').last
+  end
+
   private
 
   def client
