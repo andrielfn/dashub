@@ -81,6 +81,7 @@ after 'deploy:update_code' do
   run "rm -rf -- #{assets_cache_path} && mkdir -p -- #{release_path}/tmp/cache && ln -s -- #{shared_path}/assets-cache #{assets_cache_path}"
   run "rm -rf -- #{assets_path} && mkdir -p -- #{release_path}/public && ln -s -- #{shared_path}/assets #{assets_path}"
   run "cp #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  run "cp #{shared_path}/public/*.gif #{release_path}/public"
 
   # Compile Assets
   run "cd #{release_path}; RAILS_ENV=production bundle exec rake assets:precompile"
@@ -94,6 +95,8 @@ deploy.task :restart, :roles => :app do
   sudo "chown -R www-data:www-data #{shared_path}/bundle"
   sudo "chown -R www-data:www-data #{shared_path}/log"
   sudo "chown -R www-data:www-data #{shared_path}/assets-cache"
+  sudo "chown -R www-data:www-data #{shared_path}/assets"
+  sudo "chown -R www-data:www-data #{shared_path}/public"
 
   # Restart Application
   run "touch #{current_path}/tmp/restart.txt"
