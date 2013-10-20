@@ -4,11 +4,10 @@
 
 .team-members {
   @extend %clearfix;
-  clear: left;
 }
 
 .team-member {
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   float: left;
   position: relative;
   padding-left: 100px;
