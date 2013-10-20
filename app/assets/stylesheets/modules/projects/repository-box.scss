@@ -56,7 +56,6 @@
 
   &.pending {
     background-color: #FFF7F6;
-    // border-bottom: 1px solid #A7120F;
 
     &:hover {
       background-color: #FFF2F0;
@@ -64,13 +63,11 @@
 
     a {
       color: #A7120F;
-      // font-weight: 600;
     }
   }
 
   &.reviewed {
     background-color: #F9FAED;
-    // border-bottom: 1px solid #ECBA09;
 
     &:hover {
       background-color: #F8FAE2;
@@ -79,7 +76,6 @@
 
   &.shipable {
     background-color: #F5FAF4;
-    // border-bottom: 1px solid #59A80F;
 
     &:hover {
       background-color: #EEF8EC;

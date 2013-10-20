@@ -21,17 +21,6 @@
     </div>
   </header>
 
-  <!--
-  <div class="project-details">
-    <ul class="review-status-legend">
-      <li class="pending-legend">Pending</li>
-      <li class="reviewed-legend">Reviewed</li>
-      <li class="shipable-legend">Shipable</li>
-      <li class="approved-legend">Approved</li>
-    </ul>
-  </div>
-  -->
-
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
       <li class="project-repository-item" data-load='<%= async_project_repository_path(@project, repository) %>'>
