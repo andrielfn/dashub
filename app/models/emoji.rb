@@ -12,13 +12,7 @@
 class Emoji
   class << self
     def all
-      @emojis ||= client.emojis.attrs
-    end
-
-    private
-
-    def client
-      @client ||= Octokit::Client.new
+      @emojis ||= YAML.load_file(Rails.root.join('config/emoji.yml'))
     end
   end
 
