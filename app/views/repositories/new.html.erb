@@ -29,7 +29,7 @@
     <% @repositories.each do |repository| %>
       <li>
         <%= link_to repository.full_name, repo_url(repository) %>
-        <%= link_to '(Revoke)', project_repository_path(@project, repository), data: { method: :delete } %>
+        <%= link_to '(Revoke)', project_repository_path(@project, repository), data: { method: :delete }, class: 'revoke-repository' %>
       </li>
     <% end %>
   </ul>
