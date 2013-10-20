@@ -22,6 +22,20 @@
   }
 }
 
+.repositories-list {
+  @extend %reset-space;
+  font-size: em(12);
+}
+
+.repositories-list li {
+  padding: 6px 10px;
+  list-style: none;
+}
+
+.repositories-list li a:hover {
+  text-decoration: underline;
+}
+
 .project-box-settings-button {
   @extend %image-replacement;
   position: absolute;

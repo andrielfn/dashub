@@ -41,21 +41,6 @@ body {
   }
 }
 
-#footer {
-  margin-top: 60px;
-  padding: 25px 0;
-  border-top: 1px solid #e5dbd6;
-  background-color: #f2ece9;
-  overflow: hidden;
-}
-
-#footer-wrapper {
-  width: 940px;
-  margin: 0 auto;
-  position: relative;
-  overflow: hidden;
-}
-
 #disclaimer {
   background-color: #fdffea;
 }
@@ -67,4 +52,12 @@ body {
   position: relative;
   overflow: hidden;
   color: #ecba09;
+}
+
+.page-footer {
+  font-size: em(12);
+
+  a, a:hover {
+    text-decoration: underline;
+  }
 }
