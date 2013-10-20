@@ -1,8 +1,6 @@
 .projects-list {
   @extend %reset-space;
   @extend %clearfix;
-
-  @include columns(4 20px);
 }
 
 .project-details {
