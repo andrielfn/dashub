@@ -38,6 +38,15 @@ class RepositoriesController < ApplicationController
     redirect_to new_project_repository_path(@project), notice: 'Repository deleted successfully.'
   end
 
+  def async
+    project = current_user_or_guest_user.projects.find(params[:project_id])
+    @repository = project.repositories.find(params[:id])
+
+    @repository_review = RepositoryUserReview.new(@repository.fullname, current_user_or_guest_user, project)
+
+    render layout: false
+  end
+
   private
 
   def repository_params

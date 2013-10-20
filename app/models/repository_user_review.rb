@@ -16,7 +16,8 @@ class RepositoryUserReview
   end
 
   def pull_requests_to_review
-    @pull_requests_to_review ||= client.pull_requests(repo, 'open').map do |resource|
+    per_page = ENV.fetch('PULLS_COUNT', 10)
+    @pull_requests_to_review ||= client.pull_requests(repo, 'open').first(per_page).map do |resource|
       review = PullRequestUserReview.new(repo, resource.number, @user, project)
       review.pull_request = resource
       review

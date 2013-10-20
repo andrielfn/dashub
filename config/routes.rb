@@ -8,6 +8,10 @@ Dashub::Application.routes.draw do
   end
 
   resources :projects, except: :destroy do
-    resources :repositories, only: [:new, :create, :destroy]
+    resources :repositories, only: [:new, :create, :destroy] do
+      member do
+        get 'async'
+      end
+    end
   end
 end
