@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
   private
 
   def current_user_or_guest_user
-    ActiveSupport::Deprecation.warn("Replace with current once Rails Rumble is finished")
+    ActiveSupport::Deprecation.warn("Replace with current_user once Rails Rumble is finished")
 
     @current_user_or_guest_user ||= if user_signed_in?
       current_user
     else
-      User.find_by_username('dashubuser')
+      User.find_by_username!(ENV.fetch('GUEST_USER') { raise "Missing ENV['GUEST_USER']" })
     end
   end
 end
