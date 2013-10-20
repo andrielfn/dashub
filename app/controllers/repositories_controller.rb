@@ -33,7 +33,7 @@ class RepositoriesController < ApplicationController
   def destroy
     @project = current_user_or_guest_user.projects.find(params[:project_id])
     repository = @project.repositories.find(params[:id])
-    repository.delete unless user_signed_in?
+    repository.delete if user_signed_in?
 
     redirect_to new_project_repository_path(@project), notice: 'Repository deleted successfully.'
   end
