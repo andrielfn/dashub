@@ -7,7 +7,7 @@
 
   <%= simple_form_for @project do |f| %>
     <h3>Project name</h3>
-    <%= f.input :name, label: false, placeholder: 'Example: Ruby projects' %>
+    <%= f.input :name, label: false, placeholder: 'Example: Ruby projects', input_html:{ maxlength: 50 } %>
 
     <h3>Approval emoji</h3>
     <%= f.input :approval_emoji, label: false, placeholder: 'Approval emoji', input_html: { list: 'all-emojis' } %>

@@ -2,7 +2,7 @@
   <% @projects.each do |project| %>
     <li class="project-box">
       <h2 class="project-box-title">
-        <%= link_to project.name, project_path(project), class: 'project-box-title-link' %>
+        <%= link_to truncate(project.name, length: 50), project_path(project), class: 'project-box-title-link' %>
       </h2>
 
       <footer class="project-box-footer">
