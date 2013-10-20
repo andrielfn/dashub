@@ -18,21 +18,15 @@
     <% end %>
   </head>
   <body class="home">
-    <% if !user_signed_in? %>
-      <div id="disclaimer">
-        <div id="disclaimer-wrapper">
-          <strong>Disclaimer:</strong> you are not signed in, currently using <u>Guest</u> account.
-          Everything is readonly. You can sign up your own account.
-        </div>
-      </div>
-    <% end %>
+
+    <%= render 'layouts/disclaimer' %>
+
     <header class="main-header">
       <div class="container">
         <h1 class="logo">
           <%= link_to 'Dashub', root_path %>
         </h1>
 
-        <%# check for user_signed_in? after RailsRumble %>
         <nav class="header-navigation">
           <ul>
             <li><%= link_to 'My projects', projects_path, class: 'my-projects-link' %></li>
@@ -43,6 +37,7 @@
         <nav class="header-navigation header-navigation-right ">
           <ul>
             <% if user_signed_in? %>
+              <li class="logged-username">Logged in as <%= current_user.username %></li>
               <li><%= link_to 'Sign out', destroy_user_session_path %></li>
             <% else %>
               <li><%= link_to 'Sign in with GitHub', user_omniauth_authorize_path(:github), class: 'github-signin-link' %></li>
