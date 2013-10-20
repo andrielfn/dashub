@@ -17,7 +17,7 @@
   <% if @repository_review.priorited_pull_requests.empty? %>
     <p class="no-pull-request">No pull requests to review</p>
   <% else %>
-    <ul class="project-repositories">
+    <ul class="pull-requests">
       <% @repository_review.priorited_pull_requests.each do |pull_review| %>
         <li class='pull-request-item <%= pull_request_status(pull_review) %>'>
           <%= link_to  pull_review.url, target: '_blank', class: 'pull-request-item-link' do %>
