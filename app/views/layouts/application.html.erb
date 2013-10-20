@@ -18,7 +18,7 @@
     <% end %>
   </head>
   <body>
-    <% if user_signed_in? %>
+    <% if !user_signed_in? %>
       <div id="disclaimer">
         <div id="disclaimer-wrapper">
           <strong>Disclaimer:</strong> you are not signed in, currently using <u>Guest</u> account.
