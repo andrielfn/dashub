@@ -18,7 +18,7 @@
     display: block;
     padding: 10px 15px;
     text-decoration: none;
-    border-bottom: 1px solid #E7E7E5;
+    border-bottom: 1px dotted #E7E7E5;
   }
 }
 
@@ -36,12 +36,21 @@
   text-decoration: underline;
 }
 
+.no-repositories-associated {
+  @extend %reset-space;
+  padding: 10px;
+  font-style: italic;
+  text-align: center;
+  font-size: em(12);
+  color: #ccc;
+}
+
 .project-box-settings-button {
   @extend %image-replacement;
   position: absolute;
   top: 0px;
   right: 0px;
-  padding: 4px;
+  padding: 2px;
   width: 16px;
   height: 16px;
   background: image-url('cog.png') no-repeat center center;
@@ -54,7 +63,7 @@
   width: 150px;
   display: none;
   position: absolute;
-  top: 24px;
+  top: 20px;
   right: -1px;
   background-color: #FFF;
   z-index: 1;

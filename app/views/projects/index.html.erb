@@ -14,11 +14,15 @@
         <%= link_to truncate(project.name, length: 50), project_path(project) %>
       </h2>
 
-      <ul class="repositories-list">
-        <% project.repositories.each do |repository| %>
-          <li><%= link_to truncate(repository.full_name, length: 30), repo_url(repository), target: '_blank', title: repository.full_name %></li>
-        <% end %>
-      </ul>
+      <% if project.repositories.present? %>
+        <ul class="repositories-list">
+          <% project.repositories.each do |repository| %>
+            <li><%= link_to truncate(repository.full_name, length: 30), repo_url(repository), target: '_blank', title: repository.full_name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p class="no-repositories-associated">No repositories associated.</p>
+      <% end %>
     </li>
   <% end %>
 </ul>

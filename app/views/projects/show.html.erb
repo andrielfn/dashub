@@ -10,6 +10,13 @@
 <% end %>
 
 <div class="content-box">
+  <%= link_to 'Settings', '', class: 'project-box-settings-button' %>
+  <ul class="project-box-settings-menu">
+    <li><%= link_to 'Add new repository', new_project_repository_path(@project), class: 'project-box-settings-menu-new-repository' %></li>
+    <li><%= link_to 'Edit this project', edit_project_path(@project), class: 'project-box-settings-menu-edit' %></li>
+    <li><%= link_to 'Remove this project', project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'project-box-settings-menu-delete' %></li>
+  </ul>
+
   <header class="page-content-header">
     <h1 class="page-content-title"><%= @project.name %></h1>
     <div class="page-content-header-info">
