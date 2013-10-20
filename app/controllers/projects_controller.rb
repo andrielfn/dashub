@@ -31,14 +31,14 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find(params[:id])
+    @project = current_user_or_guest_user.projects.find(params[:id])
     load_emojis
 
     render 'new'
   end
 
   def update
-    @project = Project.find(params[:id])
+    @project = current_user_or_guest_user.projects.find(params[:id])
 
     if @project.update_attributes(project_params)
       redirect_to projects_path
@@ -48,7 +48,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @project = Project.find(params[:id])
+    @project = current_user_or_guest_user.projects.find(params[:id])
     @project.destroy
 
     redirect_to projects_path
