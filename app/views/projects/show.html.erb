@@ -3,15 +3,17 @@
 <div class="content-box">
   <header class="page-content-header">
     <h1 class="page-content-title"><%= @project.name %></h1>
-    <h3 class="page-content-subtitle"><%= pluralize(@repositories.size, 'repository') %> associated</h3>
+    <div class="page-content-header-info">
+      <p><%= pluralize(@repositories.size, 'repository') %> associated</p>
+      <p>
+        Pull Request approval criteria: <%= @project.required_approvals %> &times;
+        <%= emoji_tag @project.approval_emoji, Emoji.new(@project.approval_emoji).url, width: 12 %>
+      </p>
+    </div>
   </header>
 
+  <!--
   <div class="project-details">
-    <div class="project-approval-criteria">
-      <strong>Pull Request approval criteria:</strong> <%= @project.required_approvals %> &times;
-      <%= emoji_tag @project.approval_emoji, Emoji.new(@project.approval_emoji).url %>
-    </div>
-
     <ul class="review-status-legend">
       <li class="pending-legend">Pending</li>
       <li class="reviewed-legend">Reviewed</li>
@@ -19,6 +21,7 @@
       <li class="approved-legend">Approved</li>
     </ul>
   </div>
+  -->
 
   <ul class="project-repositories">
     <% @repositories.each do |repository| %>
@@ -30,11 +33,11 @@
           <%= link_to repository.name, repo_url(repository) , target: '_blank' %>
         </h2>
 
-        <h3 class="pull-requests-box-count reviewed-pull-requests">
+        <h3 class="pull-requests-count reviewed-pull-requests">
           0 <span>reviewed</span>
         </h3>
 
-        <h3 class="pull-requests-box-count pending-pull-requests">
+        <h3 class="pull-requests-count pending-pull-requests">
           0 <span>pending</span>
         </h3>
 

@@ -17,13 +17,22 @@
   @extend %reset-space;
 }
 
-.page-content-subtitle {
-  @extend %reset-space;
-  font-size: em(14);
-  line-height: .857142857;
-  color: #E89344;
+.page-content-header {
+  position: relative;
+  margin-bottom: 20px;
 }
 
-.page-content-header {
-  margin-bottom: 20px;
+.page-content-header-info {
+  position: absolute;
+  text-align: right;
+  top: 0;
+  right: 0;
+  float: right;
+  font-weight: 300;
+  font-size: em(12);
+
+  p {
+    margin: 0;
+    margin-bottom: 4px;
+  }
 }

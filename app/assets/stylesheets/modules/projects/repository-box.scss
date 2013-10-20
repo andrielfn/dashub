@@ -1,6 +1,11 @@
+.project-repositories {
+  @extend %clearfix;
+  @extend %reset-space;
+}
+
 .project-repository-item {
   @extend %box-sizing;
-  border: 1px solid #EFEFEF;
+  border: 1px solid #DDD;
   float: left;
   width: 450px;
   list-style: none;
@@ -18,10 +23,6 @@
   padding: 9px 15px 0;
   font-size: em(12);
   font-weight: 300;
-
-  a, a:visited {
-    color: #333;
-  }
 }
 
 .project-repositories-item-title {
@@ -30,11 +31,6 @@
   font-size: em(24);
   padding: 0 0 9px 15px;
   line-height: 1;
-
-  a, a:visited {
-    color: #333;
-    text-decoration: none;
-  }
 }
 
 .pull-requests {
@@ -59,47 +55,60 @@
   position: relative;
 
   &.pending {
-    background-color: #FFF2EC;
-    border-bottom: 1px solid #A7120F;
+    background-color: #FFF7F6;
+    // border-bottom: 1px solid #A7120F;
+
+    &:hover {
+      background-color: #FFF2F0;
+    }
 
     a {
       color: #A7120F;
-      font-weight: 600;
+      // font-weight: 600;
     }
   }
 
   &.reviewed {
-    background-color: #FDFFEA;
-    border-bottom: 1px solid #ECBA09;
+    background-color: #F9FAED;
+    // border-bottom: 1px solid #ECBA09;
+
+    &:hover {
+      background-color: #F8FAE2;
+    }
   }
 
   &.shipable {
-    background-color: #EFFCEB;
-    border-bottom: 1px solid #59A80F;
+    background-color: #F5FAF4;
+    // border-bottom: 1px solid #59A80F;
+
+    &:hover {
+      background-color: #EEF8EC;
+    }
   }
 }
 
-.pull-request-item-title {
+.pull-request-item-status {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: em(12);
+  color: #888;
+}
+
+.pull-request-item-link {
   display: block;
   text-decoration: none;
   font-weight: 300;
   color: #555;
-
-  &:hover {
-    color: #555;
-    text-decoration: underline;
-  }
 }
 
 .pull-request-open-date {
-  // padding-left: 16px;
-  // background: image-url('alarm.png') no-repeat left center;
   margin-top: -2px;
   display: block;
   font-size: em(11);
 }
 
-.pull-requests-box-count {
+.pull-requests-count {
   @extend %reset-space;
   position: absolute;
   width: 60px;
