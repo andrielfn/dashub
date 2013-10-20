@@ -18,6 +18,14 @@
     <% end %>
   </head>
   <body>
+    <% if user_signed_in? %>
+      <div id="disclaimer">
+        <div id="disclaimer-wrapper">
+          <strong>Disclaimer:</strong> you are not signed in, currently using <u>Guest</u> account.
+          Everything is readonly. You can sign up your own account.
+        </div>
+      </div>
+    <% end %>
     <header class="main-header">
       <div class="container">
         <h1 class="logo">
