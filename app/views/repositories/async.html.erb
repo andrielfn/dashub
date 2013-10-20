@@ -5,8 +5,8 @@
   <%= link_to @repository.name, repo_url(@repository) , target: '_blank' %>
 </h2>
 
-<h3 class="pull-requests-box-count approved-pull-requests">
-  <%= @repository_review.pull_requests_approved.count %> <span>approved</span>
+<h3 class="pull-requests-box-count reviewed-pull-requests">
+  <%= @repository_review.pull_requests_reviewed.count %> <span>reviewed</span>
 </h3>
 
 <h3 class="pull-requests-box-count pending-pull-requests">
