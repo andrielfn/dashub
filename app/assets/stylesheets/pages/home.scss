@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.home .main-header {
+  margin-bottom: 0;
+}
+
 .section {
   margin: 0 auto;
   width: 960px;
@@ -22,6 +26,10 @@
 
 .section h3 + p {
   margin-top: 0px;
+}
+
+.no-margin {
+  margin: 0 !important;
 }
 
 .home .section {
@@ -75,4 +83,5 @@
 .call-to-action {
   padding: 20px 0;
   text-align: center;
+  background: image-url('home_bg.png') no-repeat 100% center;
 }
