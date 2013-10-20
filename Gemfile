@@ -8,6 +8,8 @@ gem 'mysql2'
 gem 'octokit'
 gem 'devise'
 gem 'omniauth-github'
+gem 'faraday_middleware'
+gem 'dalli'
 
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'

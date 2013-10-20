@@ -45,6 +45,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    dalli (2.6.4)
     devise (3.1.0)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -59,6 +60,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    faraday_middleware (0.9.0)
+      faraday (>= 0.7.4, < 0.9)
     hashie (2.0.5)
     highline (1.6.20)
     hike (1.2.3)
@@ -182,8 +185,10 @@ DEPENDENCIES
   bourbon
   capistrano (~> 2.15)
   capybara (~> 2.1.0)
+  dalli
   devise
   dotenv-rails
+  faraday_middleware
   jbuilder (~> 1.2)
   jquery-rails
   launchy
