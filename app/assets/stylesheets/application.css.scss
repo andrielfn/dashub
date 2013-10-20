@@ -14,4 +14,14 @@
 
 .loader {
   text-align: center;
+  padding: 10px 0;
+
+  p {
+    @extend %reset-space;
+    display: block;
+    font-style: italic;
+    text-align: center;
+    font-size: em(12);
+    color: #ccc;
+  }
 }
